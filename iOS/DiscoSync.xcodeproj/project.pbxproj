@@ -23,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		08490AA516E2B293007CF3E6 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */ = {
+			isa = PBXGroup;
+			children = (
+				08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */,
+				08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */,
+			);
+			name = "Matt Gallagher's Audio Streamer";
+			sourceTree = "<group>";
+		};
 		6595612E16E2AEE700481BA5 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +99,7 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
 				6595615216E2AEE700481BA5 /* MainStoryboard.storyboard */,
