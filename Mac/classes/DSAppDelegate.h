@@ -12,4 +12,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (IBAction)startRecording:(id)sender;
+- (IBAction)stopRecording:(id)sender;
+
 @end

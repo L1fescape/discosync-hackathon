@@ -49,6 +49,8 @@
 		659567B716E3054000481BA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659567B616E3054000481BA5 /* Security.framework */; };
 		659567B916E3055B00481BA5 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659567B816E3055B00481BA5 /* CoreServices.framework */; };
 		659567C416E3058800481BA5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659567C316E3058800481BA5 /* Accelerate.framework */; };
+		659567D316E320CF00481BA5 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659567D216E320CF00481BA5 /* Firebase.framework */; };
+		659567D716E3231F00481BA5 /* DSNovocainChunkStringer.m in Sources */ = {isa = PBXBuildFile; fileRef = 659567D616E3231F00481BA5 /* DSNovocainChunkStringer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -207,6 +209,9 @@
 		659567B616E3054000481BA5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		659567B816E3055B00481BA5 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		659567C316E3058800481BA5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		659567D216E320CF00481BA5 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		659567D516E3231F00481BA5 /* DSNovocainChunkStringer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNovocainChunkStringer.h; sourceTree = "<group>"; };
+		659567D616E3231F00481BA5 /* DSNovocainChunkStringer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNovocainChunkStringer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +228,7 @@
 				659567A116E2FEB700481BA5 /* CoreAudio.framework in Frameworks */,
 				6595679A16E2FC8000481BA5 /* SBJson.framework in Frameworks */,
 				6595616E16E2F51900481BA5 /* Cocoa.framework in Frameworks */,
+				659567D316E320CF00481BA5 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +284,7 @@
 				6595617F16E2F51900481BA5 /* DSAppDelegate.h */,
 				6595618016E2F51900481BA5 /* DSAppDelegate.m */,
 				6595618216E2F51A00481BA5 /* MainMenu.xib */,
+				659567D416E322F400481BA5 /* Audio Tools */,
 				6595617416E2F51900481BA5 /* Supporting Files */,
 			);
 			name = Classes;
@@ -299,6 +306,7 @@
 		6595618A16E2F82A00481BA5 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				659567CA16E320C600481BA5 /* Firebase */,
 				6595619816E2FAF400481BA5 /* socket.IO */,
 				6595618B16E2F92600481BA5 /* Novocaine */,
 			);
@@ -445,6 +453,23 @@
 				659567B116E3013200481BA5 /* TestChat.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		659567CA16E320C600481BA5 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				659567D216E320CF00481BA5 /* Firebase.framework */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
+		659567D416E322F400481BA5 /* Audio Tools */ = {
+			isa = PBXGroup;
+			children = (
+				659567D516E3231F00481BA5 /* DSNovocainChunkStringer.h */,
+				659567D616E3231F00481BA5 /* DSNovocainChunkStringer.m */,
+			);
+			name = "Audio Tools";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -612,6 +637,7 @@
 				6595675A16E2FAF800481BA5 /* base64.c in Sources */,
 				6595675B16E2FAF800481BA5 /* NSData+SRB64Additions.m in Sources */,
 				6595675C16E2FAF800481BA5 /* SRWebSocket.m in Sources */,
+				659567D716E3231F00481BA5 /* DSNovocainChunkStringer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +752,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSyncStreamer-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSyncStreamer-Info.plist";
@@ -738,6 +768,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libraries\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSyncStreamer-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSyncStreamer-Info.plist";
