@@ -35,11 +35,24 @@ $(document).ready(function(){
 	});
 	$(".aboutButton").click(function(){
 		$(".app_main").animate({top : "-1000px"}, 500 );
+		$(".aboutButton").animate({opacity : 0}, "slow" );
 		$(".aboutButton").css({display : "none"});
+		$(".aboutX").css({display : "block"});
+		$(".aboutX").animate({opacity : 0.8}, "slow" );
 	});
 	$(".aboutClose").click(function(){
 		$(".app_main").animate({top : "0px"}, 500 );
+		$(".aboutX").animate({opacity : 0}, "slow" );
+		$(".aboutX").css({display : "none"});
 		$(".aboutButton").css({display : "block"});
+		$(".aboutButton").animate({opacity : 1}, "slow" );
+	});
+	$(".aboutX").click(function(){
+		$(".app_main").animate({top : "0px"}, 500 );
+		$(".aboutX").animate({opacity : 0}, "slow" );
+		$(".aboutX").css({display : "none"});
+		$(".aboutButton").css({display : "block"});
+		$(".aboutButton").animate({opacity : 1}, "slow" );
 	});
 
 });
