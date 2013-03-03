@@ -1,10 +1,13 @@
 <html>
 <head>
 	<title>DiscoSync</title>
+	<!-- Style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<!-- jQuery -->
 	<script type="text/javascript" src='js/jquery-1.7.1.min.js'></script>
 	<script type="text/javascript" src='js/script.js'></script>
-
+	<!-- Firebase -->
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 </head>
 <body>
 	<div class="app_main">
@@ -94,4 +97,7 @@
 
 	<div class="dim"></div>
 </body>
+<script>
+	var disco = new Firebase('https://disco-sync.firebaseio.com/');
+</script>
 </html>
