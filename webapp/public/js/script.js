@@ -6,7 +6,7 @@ $(document).ready(function(){
 		
 	});
 	$(".back").click(function(){
-		$(".slider").animate({left : "-0"}, "fast" );
+		$(".slider").animate({left : "0"}, "fast" );
 		$(".app_room").animate({opacity : 0}, "fast" );
 		$(".app_roomlist").animate({opacity : 1}, "slow" );
 	});
