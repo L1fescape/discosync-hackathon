@@ -16,6 +16,7 @@ $(document).ready(function(){
 		$(".letsDJ").animate({opacity : 1}, "slow");
 		$(".closeDJ").animate({opacity : 0.5}, "slow");
 		$(".interfaceDJ").animate({opacity : 1, top : "100px"}, 1000);
+		$(".letsDJ").animate({opacity : 0.4}, "slow");
 	});
 	$(".closeDJ").click(function(){
 		$(".app_main").animate({width : "600px"}, "slow" );
@@ -24,5 +25,6 @@ $(document).ready(function(){
 		$(".closeDJ").animate({opacity : 0}, "slow");
 		$(".interfaceDJ").animate({opacity : 0}, "fast");
 		$(".interfaceDJ").animate({top : "1000px"}, "fast");
+		$(".letsDJ").animate({opacity : 0.0}, "slow");
 	});
 });
