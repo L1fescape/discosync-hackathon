@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08490AA616E2B293007CF3E6 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AA516E2B293007CF3E6 /* CoreAudio.framework */; };
+		08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */; };
+		08490AC016E2BA1A007CF3E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */; };
+		08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AC116E2BA24007CF3E6 /* CFNetwork.framework */; };
+		08490AC416E2BA2B007CF3E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -23,8 +26,12 @@
 
 /* Begin PBXFileReference section */
 		08490AA516E2B293007CF3E6 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		08490AC116E2BA24007CF3E6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		08490ADE16E2CD5D007CF3E6 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		08490ADF16E2CD5D007CF3E6 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,7 +55,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08490AA616E2B293007CF3E6 /* CoreAudio.framework in Frameworks */,
+				08490AC416E2BA2B007CF3E6 /* QuartzCore.framework in Frameworks */,
+				08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */,
+				08490AC016E2BA1A007CF3E6 /* AudioToolbox.framework in Frameworks */,
+				08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */,
 				6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */,
 				6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */,
 				6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */,
@@ -58,13 +68,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */ = {
+		08490ADD16E2CD3B007CF3E6 /* Audio Streamer */ = {
 			isa = PBXGroup;
 			children = (
-				08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */,
-				08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */,
+				08490ADE16E2CD5D007CF3E6 /* AudioStreamer.h */,
+				08490ADF16E2CD5D007CF3E6 /* AudioStreamer.m */,
 			);
-			name = "Matt Gallagher's Audio Streamer";
+			name = "Audio Streamer";
 			sourceTree = "<group>";
 		};
 		6595612E16E2AEE700481BA5 = {
@@ -88,6 +98,10 @@
 		6595613916E2AEE700481BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */,
+				08490AC116E2BA24007CF3E6 /* CFNetwork.framework */,
+				08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */,
+				08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */,
 				08490AA516E2B293007CF3E6 /* CoreAudio.framework */,
 				6595613A16E2AEE700481BA5 /* UIKit.framework */,
 				6595613C16E2AEE700481BA5 /* Foundation.framework */,
@@ -99,7 +113,7 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */,
+				08490ADD16E2CD3B007CF3E6 /* Audio Streamer */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
 				6595615216E2AEE700481BA5 /* MainStoryboard.storyboard */,

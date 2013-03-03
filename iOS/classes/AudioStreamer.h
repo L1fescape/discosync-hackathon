@@ -32,11 +32,11 @@
 
 #define LOG_QUEUED_BUFFERS 0
 
-#define kNumAQBufs 16			// Number of audio queue buffers we allocate.
+#define kNumAQBufs 64			// Number of audio queue buffers we allocate.
 								// Needs to be big enough to keep audio pipeline
 								// busy (non-zero number of queued buffers) but
 								// not so big that audio takes too long to begin
-								// (kNumAQBufs * kAQBufSize of data must be
+								// ((kNumAQBufs / 2) * kAQBufSize) of data must be
 								// loaded before playback will start).
 								//
 								// Set LOG_QUEUED_BUFFERS to 1 to log how many
@@ -106,6 +106,7 @@ typedef enum
 } AudioStreamerErrorCode;
 
 extern NSString * const ASStatusChangedNotification;
+extern NSString * const ASFailureNotification;
 
 @interface AudioStreamer : NSObject
 {
@@ -182,12 +183,14 @@ extern NSString * const ASStatusChangedNotification;
 - (void)start;
 - (void)stop;
 - (void)pause;
+- (void)resume;
 - (BOOL)isPlaying;
 - (BOOL)isPaused;
 - (BOOL)isWaiting;
 - (BOOL)isIdle;
 - (void)seekToTime:(double)newSeekTime;
 - (double)calculatedBitRate;
+- (NSString *)audioFeedURL;
 
 @end
 
