@@ -1,0 +1,6 @@
+[submodule "Mac/libraries/socket.IO"]
+	path = Mac/libraries/socket.IO
+	url = https://github.com/pkyeck/socket.IO-objc.git
+[submodule "iOS/libraries/socket.IO"]
+	path = iOS/libraries/socket.IO
+	url = git://github.com/pkyeck/socket.IO-objc.git

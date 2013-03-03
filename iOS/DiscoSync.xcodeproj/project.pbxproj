@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08490AA616E2B293007CF3E6 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AA516E2B293007CF3E6 /* CoreAudio.framework */; };
+		08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */; };
+		08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AC116E2BA24007CF3E6 /* CFNetwork.framework */; };
+		08490AEE16E2CFEE007CF3E6 /* DSDiscoRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */; };
+		089EA48316E325D600F03AC0 /* DSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089EA48216E325D600F03AC0 /* DSCell.m */; };
+		08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084911A216E31584007CF3E6 /* Firebase.framework */; };
+		08B425EB16E3358400A2C729 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
+		08B425ED16E3359200A2C729 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115E16E30135007CF3E6 /* libicucore.dylib */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -23,8 +29,20 @@
 
 /* Begin PBXFileReference section */
 		08490AA516E2B293007CF3E6 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
-		08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		08490AC116E2BA24007CF3E6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		08490AEC16E2CFED007CF3E6 /* DSDiscoRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDiscoRoomViewController.h; sourceTree = "<group>"; };
+		08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDiscoRoomViewController.m; sourceTree = "<group>"; };
+		08490B5916E2FCAD007CF3E6 /* SocketTesterARC.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SocketTesterARC.xcodeproj; sourceTree = "<group>"; };
+		08490BD016E2FEC2007CF3E6 /* SBJson.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SBJson.xcodeproj; sourceTree = "<group>"; };
+		08490E7116E2FEC3007CF3E6 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SocketRocket.xcodeproj; sourceTree = "<group>"; };
+		0849115C16E3011F007CF3E6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0849115E16E30135007CF3E6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		084911A216E31584007CF3E6 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		089EA48116E325D600F03AC0 /* DSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCell.h; sourceTree = "<group>"; };
+		089EA48216E325D600F03AC0 /* DSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCell.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,8 +66,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08490AA616E2B293007CF3E6 /* CoreAudio.framework in Frameworks */,
+				08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */,
+				08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */,
 				6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */,
+				08B425ED16E3359200A2C729 /* libicucore.dylib in Frameworks */,
+				08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */,
+				08B425EB16E3358400A2C729 /* Security.framework in Frameworks */,
 				6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */,
 				6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -58,21 +80,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */ = {
+		089EA48016E325C400F03AC0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				08490AB216E2B8C7007CF3E6 /* AudioStreamer.h */,
-				08490AB316E2B8C7007CF3E6 /* AudioStreamer.m */,
+				089EA48116E325D600F03AC0 /* DSCell.h */,
+				089EA48216E325D600F03AC0 /* DSCell.m */,
 			);
-			name = "Matt Gallagher's Audio Streamer";
+			name = UI;
+			sourceTree = "<group>";
+		};
+		08B425E216E3352E00A2C729 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08B425E416E3352E00A2C729 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08B425E616E3352E00A2C729 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		6595612E16E2AEE700481BA5 = {
 			isa = PBXGroup;
 			children = (
+				0849115E16E30135007CF3E6 /* libicucore.dylib */,
 				6595614016E2AEE700481BA5 /* Classes */,
-				6595616016E2B06700481BA5 /* Resources */,
 				6595613916E2AEE700481BA5 /* Frameworks */,
+				6595616016E2B06700481BA5 /* Resources */,
 				6595613816E2AEE700481BA5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +126,13 @@
 		6595613916E2AEE700481BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				084911A216E31584007CF3E6 /* Firebase.framework */,
+				0849115E16E30135007CF3E6 /* libicucore.dylib */,
+				0849115C16E3011F007CF3E6 /* Security.framework */,
+				08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */,
+				08490AC116E2BA24007CF3E6 /* CFNetwork.framework */,
+				08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */,
+				08490ABC16E2BA11007CF3E6 /* MediaPlayer.framework */,
 				08490AA516E2B293007CF3E6 /* CoreAudio.framework */,
 				6595613A16E2AEE700481BA5 /* UIKit.framework */,
 				6595613C16E2AEE700481BA5 /* Foundation.framework */,
@@ -99,7 +144,7 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				08490AB016E2B89C007CF3E6 /* Matt Gallagher's Audio Streamer */,
+				089EA48016E325C400F03AC0 /* UI */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
 				6595615216E2AEE700481BA5 /* MainStoryboard.storyboard */,
@@ -126,6 +171,8 @@
 			children = (
 				6595615516E2AEE700481BA5 /* DSViewController.h */,
 				6595615616E2AEE700481BA5 /* DSViewController.m */,
+				08490AEC16E2CFED007CF3E6 /* DSDiscoRoomViewController.h */,
+				08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -181,6 +228,20 @@
 			mainGroup = 6595612E16E2AEE700481BA5;
 			productRefGroup = 6595613816E2AEE700481BA5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 08B425E416E3352E00A2C729 /* Products */;
+					ProjectRef = 08490BD016E2FEC2007CF3E6 /* SBJson.xcodeproj */;
+				},
+				{
+					ProductGroup = 08B425E216E3352E00A2C729 /* Products */;
+					ProjectRef = 08490E7116E2FEC3007CF3E6 /* SocketRocket.xcodeproj */;
+				},
+				{
+					ProductGroup = 08B425E616E3352E00A2C729 /* Products */;
+					ProjectRef = 08490B5916E2FCAD007CF3E6 /* SocketTesterARC.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6595613616E2AEE700481BA5 /* DiscoSync */,
@@ -211,6 +272,8 @@
 				6595614716E2AEE700481BA5 /* main.m in Sources */,
 				6595614B16E2AEE700481BA5 /* DSAppDelegate.m in Sources */,
 				6595615716E2AEE700481BA5 /* DSViewController.m in Sources */,
+				08490AEE16E2CFEE007CF3E6 /* DSDiscoRoomViewController.m in Sources */,
+				089EA48316E325D600F03AC0 /* DSCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,9 +358,14 @@
 		6595615B16E2AEE700481BA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -306,6 +374,10 @@
 		6595615C16E2AEE700481BA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";
