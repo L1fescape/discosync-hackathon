@@ -351,6 +351,7 @@
 		0849111D16E2FEC4007CF3E6 /* SocketRocket.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 08490E7016E2FEC3007CF3E6 /* SocketRocket.podspec */; };
 		0849115D16E3011F007CF3E6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		0849115F16E30135007CF3E6 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115E16E30135007CF3E6 /* libicucore.dylib */; };
+		0849116516E30EB8007CF3E6 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849116416E30EB8007CF3E6 /* Firebase.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -807,6 +808,7 @@
 		08490E7116E2FEC3007CF3E6 /* SocketRocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SocketRocket.xcodeproj; sourceTree = "<group>"; };
 		0849115C16E3011F007CF3E6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0849115E16E30135007CF3E6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		0849116416E30EB8007CF3E6 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -837,6 +839,7 @@
 				6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */,
 				6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */,
 				6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */,
+				0849116516E30EB8007CF3E6 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1368,6 +1371,7 @@
 		6595613916E2AEE700481BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0849116416E30EB8007CF3E6 /* Firebase.framework */,
 				0849115C16E3011F007CF3E6 /* Security.framework */,
 				08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */,
 				08490AC116E2BA24007CF3E6 /* CFNetwork.framework */,
@@ -2009,6 +2013,10 @@
 		6595615B16E2AEE700481BA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";
@@ -2021,6 +2029,10 @@
 		6595615C16E2AEE700481BA5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";

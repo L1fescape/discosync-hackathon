@@ -7,6 +7,7 @@
 //
 
 #import "DSDiscoRoomViewController.h"
+#import <Firebase/Firebase.h>
 
 @interface DSDiscoRoomViewController ()
 

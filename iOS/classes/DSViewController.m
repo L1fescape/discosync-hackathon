@@ -8,6 +8,7 @@
 
 #import "DSViewController.h"
 #import "DSDiscoRoomViewController.h"
+#import "SocketIO.h" //@TODO: Remove this
 
 @interface DSViewController ()
 
@@ -17,6 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	//Set style and title for the nav bar
+	self.navigationItem.title = @"Now Playing";
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	
+	
 }
 
 - (void)didReceiveMemoryWarning {
