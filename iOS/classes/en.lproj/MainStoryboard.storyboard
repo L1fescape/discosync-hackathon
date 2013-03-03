@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <classes>
-        <class className="DSViewController" superclassName="UIViewController">
+        <class className="DSViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DSViewController.h"/>
         </class>
     </classes>
