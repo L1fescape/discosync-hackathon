@@ -4,11 +4,12 @@ body, html {
 }
 
 html{
-	background:url(img/main-bg.jpg);
+	background:url(../img/main-bg.jpg);
 	background-size:1600px;
 	background-position:top center;
 	background-repeat:no-repeat;
 	min-width:700px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .dim { 
@@ -17,9 +18,11 @@ html{
 	width:100%;
 	height:100%;
 	background:#000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
 	opacity:0;
-	position:fixed;
-	z-index: 0;
 }
 
 .app_main {
@@ -27,16 +30,17 @@ html{
 	height:540px;
 	border-radius:16px;
 	box-shadow:0px 4px 4px #000, 0px 1px 1px #fff inset;
-	background:url(img/rock.png);
+	background:url(../img/rock.png);
 	margin:40px auto 0;
 	position:relative;
 	overflow:hidden;
+	z-index: 2;
 }
 
 .logo {
 	width: 242px;
 	height: 32px;
-	background-image: url(img/logo.png);
+	background-image: url(../img/logo.png);
 	background-position:center center;
 	background-repeat:no-repeat;
 	position:relative;
@@ -80,7 +84,7 @@ html{
 	padding:0;
 	display:inline;
 	float:left;
-	background:url(img/room-1.jpg);
+	background:url(../img/room-1.jpg);
 	background-size:720px auto;
 	background-position:top center;
 	overflow:hidden;
@@ -112,7 +116,6 @@ html{
 
 .roomlist_item div {
 	display:block;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color:#fff;
 	text-shadow:0px 1px 2px #000;
 	padding-left: 24px;
@@ -187,7 +190,7 @@ html{
 	margin-top:-9px;
 	height:18px;
 	width:18px;
-	background:url(img/arrow.png);
+	background:url(../img/arrow.png);
 	background-repeat: no-repeat;
 	background-size:18px 18px;
 	transition: linear 0.1s;
@@ -209,7 +212,7 @@ html{
 .letsDJ {
 	height:32px;
 	width:32px;
-	background:url(img/icon-DJ.png);
+	background:url(../img/icon-DJ.png);
 	background-size: 100% 100%;
 	background-position:center center;
 	position:absolute;
@@ -226,13 +229,13 @@ html{
 }
 
 .letsDJ:hover {
-	opacity: 0.8;
+	opacity: 1!important;
 }
 
 .closeDJ {
 	height:32px;
 	width:32px;
-	background:url(img/icon-close.png);
+	background:url(../img/icon-close.png);
 	background-size: 100% 100%;
 	background-position:center center;
 	position:absolute;
@@ -260,4 +263,146 @@ html{
 	position:absolute;
 	top:1000px;
 	left:100px;
+}
+
+
+
+
+/*  About  */
+.about {
+	width:560px;
+	height:480px;
+	box-shadow:0px 4px 4px rgba(0,0,0,0.5), 0px 2px 8px rgba(255,255,255,0.8) inset;
+	background:rgba(255,255,255,0.5);
+	margin:80px auto 0;
+	position:absolute;
+	overflow:hidden;
+	border-radius:10px;
+	top:0;
+	left:50%;
+	margin-left:-280px;
+	z-index: 1;
+}
+
+.about h1, h2{
+	color:#333;
+	text-shadow:0px 1px rgba(255,255,255,0.5);
+	text-align: center;
+	letter-spacing:-1px;
+	margin-top:24px;
+}
+
+.about h3{
+	color:#111;
+	text-shadow:0px 1px rgba(255,255,255,0.3);
+	text-align: center;
+	letter-spacing:2px;
+	text-transform: uppercase;
+	font-weight:normal;
+	font-size: 18px;
+	margin-top: 170px;
+}
+
+.about img:first-child{
+	margin-left:40px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+.about img:last-child{
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.about img {
+	box-shadow:0px 1px 1px rgba(255,255,255,0.5);
+	margin-bottom:20px;
+	opacity:0.8;
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+	float:left;
+}
+
+.about img:hover {
+	opacity:1;
+	margin-top: 3px;
+}
+
+.aboutButton {
+	height:32px;
+	width:32px;
+	background:url(../img/icon-about.png);
+	background-size: 100% 100%;
+	background-position:center center;
+	position:absolute;
+	left:24px;
+	bottom:24px;
+	opacity: 0.8;
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+}
+
+.aboutClose {
+	padding:12px 24px;
+	transition: linear 0.2s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.2s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.2s;
+	/* Opera */
+	-o-transition:linear 0.2s;
+	color:#000;
+	background:rgba(255,255,255,0.2);
+	box-shadow:0px 0px 10px rgba(0,0,0,0.3);
+	margin-top:32px;
+}
+
+.aboutClose:hover {
+	background:rgba(255,255,255,0.8);
+		margin-top:28px!important;
+}
+
+.aboutButton:hover {
+	opacity: 1!important;
+}
+
+.aboutClose:hover .sink{
+	opacity:1;
+
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+}
+
+.sink {
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+	background: url(../img/discosync.png);
+	background-size: 100% auto;
+	height: 79px;
+	width: 109px;
+	margin-left: auto;
+	margin-right: auto;
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity:0.3;
 }
