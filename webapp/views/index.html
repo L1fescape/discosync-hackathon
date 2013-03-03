@@ -98,6 +98,10 @@
 	<div class="dim"></div>
 </body>
 <script>
+	var stream_list = [];
 	var disco = new Firebase('https://disco-sync.firebaseio.com/');
+	disco.child('stream').on('child_added', function(stream) {
+		stream_list.push(stream);
+	});
 </script>
 </html>

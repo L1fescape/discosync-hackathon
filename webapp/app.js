@@ -13,6 +13,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
 	, fs = require('fs')
+	, ogg = require('ogg')
+	, Firebase = require('./firebase-node')
 
 
 /**
@@ -49,6 +51,29 @@ app.configure('development', function(){
 app.get('/', routes.index);
 // Sample song with chunked responses
 
+/**
+ * Setup ogg decoder
+ */
+var decoder = new ogg.Decoder();
+var file = __dirname + '/AmorFati.ogg'
+var disco = new Firebase('https://disco-sync.firebaseio.com/');
+decoder.on('stream', function (stream) {
+  console.log('new "stream":', stream.serialno);
+
+  // emitted for each `ogg_packet` instance in the stream.
+  stream.on('data', function (packet) {
+    console.log('got "packet":', packet.packetno);
+		disco.child('stream').push(packet);
+  });
+
+  // emitted after the last packet of the stream
+  stream.on('end', function () {
+    console.log('got "end":', stream.serialno);
+  });
+});
+
+// pipe the ogg file to the Decoder
+fs.createReadStream(file).pipe(decoder);
 
 /** 
  * Initialize listener
