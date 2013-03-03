@@ -180,6 +180,7 @@ html{
 .back:hover {
 	opacity:1;
 	background:rgba(0,0,0,0.3);
+	cursor: pointer;
 }
 
 .roomlist_item .carrot {
@@ -204,6 +205,7 @@ html{
 
 .roomlist_item:hover .carrot {
 	opacity:0.8;
+	cursor: pointer;
 }
 
 
@@ -230,6 +232,7 @@ html{
 
 .letsDJ:hover {
 	opacity: 1!important;
+	cursor: pointer;
 }
 
 .closeDJ {
@@ -253,6 +256,7 @@ html{
 
 .closeDJ:hover{
 	opacity:1!important;
+	cursor: pointer;
 }
 
 .interfaceDJ {
@@ -331,6 +335,7 @@ html{
 .about img:hover {
 	opacity:1;
 	margin-top: 3px;
+	cursor: pointer;
 }
 
 .aboutButton {
@@ -370,10 +375,12 @@ html{
 .aboutClose:hover {
 	background:rgba(255,255,255,0.8);
 		margin-top:28px!important;
+		cursor: pointer;
 }
 
 .aboutButton:hover {
 	opacity: 1!important;
+	cursor: pointer;
 }
 
 .aboutClose:hover .sink{
