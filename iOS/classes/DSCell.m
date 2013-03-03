@@ -27,10 +27,15 @@
 - (void)layoutSubviews {
 	[super layoutSubviews];
 	
+	self.textLabel.textColor = [UIColor whiteColor];
+	self.textLabel.font = [UIFont boldSystemFontOfSize:32.0f];
+	self.detailTextLabel.textColor	 = [UIColor whiteColor];
+	
 	self.numberOfListeners = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 20, self.bounds.size.width, 20)];
 	self.numberOfListeners.textAlignment = UITextAlignmentRight;
 	self.numberOfListeners.backgroundColor = [UIColor clearColor];
 	self.numberOfListeners.text = [self.listenerCount stringByAppendingString:@" listeners"];
+	self.numberOfListeners.textColor = [UIColor whiteColor];
 	[self.contentView addSubview:self.numberOfListeners];
 }
 

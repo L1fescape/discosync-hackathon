@@ -24,6 +24,8 @@
 	
 	//Set table view appearance
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	self.tableView.rowHeight = 90.0f;
+	self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rock"]];
 	
 	
 	//Playing with Firebase
@@ -40,7 +42,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	DSCell *cell = [[DSCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-	cell.textLabel.text = @"DJ Name";
+	cell.textLabel.text = @"DJ NAME";
 	cell.detailTextLabel.text = @"Genre";
 	cell.listenerCount = @"123";
 	return cell;
