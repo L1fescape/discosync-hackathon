@@ -1,11 +1,198 @@
 <html>
 <head>
-	<title>Test</title>
+	<title>DiscoSync</title>
+
+<style type="text/css">
+body, html {
+	margin:0;
+	padding:0;
+}
+html{
+	background:url(img/room1.jpg);
+	background-size:1600px;
+	background-position:top center;
+	background-repeat:no-repeat;
+	min-width:700px;
+
+}
+
+.app_main {
+	width:600px;
+	height:500px;
+	border-radius:16px;
+	box-shadow:0px 4px 4px #000, 0px 1px 1px #fff inset;
+	background:url(img/rock.png);
+	margin:40px auto 0;
+}
+
+.logo {
+	width: 242px;
+	height: 32px;
+	background-image: url(img/logo.png);
+	background-position:center center;
+	background-repeat:no-repeat;
+	position:relative;
+	top:12px;
+	padding:6px;
+	margin:0 auto;
+}
+
+.frame {
+	width:500px;
+	height:400px;
+	overflow: hidden;
+	border-radius:10px;
+	margin:20px auto;
+	background:rgba(255,255,255,0.4);
+	box-shadow: 0px 2px 4px 1px rgba(0,0,0,0.8) inset;
+}
+
+.slider {
+	width:1000px;
+	height:400px;
+	position:relative;
+	top:0;
+	left:0;
+}
+
+.app_roomlist {
+	width:500px;
+	height:400px;
+	margin:0;
+	padding:0;
+	display:inline;
+	float:left;
+	border-radius:10px;
+	overflow: hidden;
+}
+
+
+.app_room {
+	width:500px;
+	height:400px;
+	margin:0;
+	padding:0;
+	display:inline;
+	float:left;
+	background:url(img/room2.jpg);
+	background-size:720px auto;
+	background-position:top center;
+	border-radius:10px;
+	overflow:hidden;
+}
+
+.roomlist_item {
+	width:100%;
+	padding:10px 0px;
+	border-top:1px solid rgba(255,255,255,0.3);
+	border-bottom:1px solid rgba(0,0,0,0.3);
+	background:rgba(255,255,255,0.1);
+	transition: linear 0.2s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.2s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.2s;
+	/* Opera */
+	-o-transition:linear 0.2s;
+}
+
+
+.roomlist_item:first-child{
+	border-top:none;
+}
+
+.roomlist_item:hover{
+	background:rgba(255,255,255,0.5);	
+}
+
+.roomlist_item div {
+	display:block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#fff;
+	text-shadow:0px 1px 2px #000;
+	padding-left: 24px;
+}
+
+.djname {
+	font-weight:bold;
+	font-size:2em;
+	letter-spacing:-2px;
+	text-transform: uppercase;
+}
+
+.genre {
+	font-style:italic;
+	font-size:1.3em;
+}
+
+.listeing {
+	font-size:1em;
+}
+
+.app_room div {
+	display:block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#fff;
+	text-shadow:0px 1px 2px #000;
+	padding-left: 24px;
+}
+
+.back {
+	opacity:0.5;
+	padding:20px;
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+}
+
+.back:hover {
+	opacity:1;
+}
+
+</style>
+
+<script type="text/javascript" src='js/jquery-1.7.1.min.js'></script>
+<script type="text/javascript" src='js/script.js'></script>
+
 </head>
 <body>
-	<audio controls>
-		<source src="polynation.mp3" type="audio/mpeg">
-		Your browser does not support the audio tag.
-	</audio>
+	<div class="app_main">
+		<div class="logo"></div>
+		<div class="frame">
+			<div class="slider">
+				<div class="app_roomlist">
+					<div class="roomlist_item">
+						<div class="djname">DJ NAME</div>
+						<div class="genre">Music Genre</div>
+						<div class="listening">102 people listening</div>
+					</div>
+					<div class="roomlist_item">
+						<div class="djname">will newton</div>
+						<div class="genre">Moombahton, Trap, Electro</div>
+						<div class="listening">6 people listening</div>
+					</div>
+					<div class="roomlist_item">
+						<div class="djname">A-Trak</div>
+						<div class="genre">Hip Hop, Booty Bounce</div>
+						<div class="listening">1,907 people listening</div>
+					</div>
+				</div>
+				<div class="app_room">
+					<div class="back">sync to a different disco</div>
+					<div class="djname">will newton</div>
+					<div class="genre">Moombahton, Trap, Electro</div>
+					<div class="listening">6 people listening</div>
+					<audio controls>
+						<source src="polynation.mp3" type="audio/mpeg">
+						Your browser does not support the audio tag.
+					</audio>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
