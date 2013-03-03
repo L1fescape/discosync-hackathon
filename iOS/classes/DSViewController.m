@@ -27,13 +27,11 @@
 	
 	
 	//Playing with Firebase
-	Firebase *f1 = [[Firebase alloc] initWithUrl:@"https://discosync.firebase.com"];
+	Firebase *f1 = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/stream"];
 	
 	[f1 on:FEventTypeValue doCallback:^(FDataSnapshot *snap) {
 		NSLog(@"Value : %@ %@", [snap val], [snap name]);
 	}];
-	
-	[f1 set:@"hello, world"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
