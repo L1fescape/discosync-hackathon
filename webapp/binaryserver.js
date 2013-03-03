@@ -1,3 +1,18 @@
+var BinaryServer = require('binaryjs').BinaryServer;
+var fs = require('fs');
+var Mp3Reader = require('./mp3.js');
+
+// Start Binary.js server
+var server = BinaryServer({port: 9000});
+// Wait for new user connections
+server.on('connection', function(socket){
+	var file = fs.createReadStream(__dirname + '/polynation.mp3', { bufferSize: 3056 * 44100 / 1152 });
+	file = new Mp3Reader(file, 3).read;
+	socket.send(file); 
+});
+
+
+// Start static file server
 var	app = require('http').createServer(handler),
      io = require('socket.io').listen(app),
      fs = require('fs')
@@ -53,17 +68,3 @@ function handler (req, res) {
 		});
 	}
 }
-
-// TODO implement oAuth
-io.sockets.on('connection', function (socket) {
-	// Once we recieve a chunk of the stream
-	socket.on('stream-send', function(stream) {
-		// Send it on to the rest of the clients
-		stream = fs.createReadStream("polynation.mp3", 
-																 {'flags': 'r',
-																		'encoding': 'binary', 
-																		'mode': 0666, 
-																		'bufferSize': 64 * 1024});
-		io.sockets.emit('stream-receive', { stream : stream });
-	});
-});
