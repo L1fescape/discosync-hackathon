@@ -9,6 +9,7 @@ var port = 1337;
  */
 
 var express = require('express')
+	, routes = require('./routes')
   , http = require('http')
   , path = require('path')
 	, fs = require('fs')
