@@ -55,25 +55,15 @@ app.get('/', routes.index);
  * Setup ogg decoder
  */
 var decoder = new ogg.Decoder();
+var encoder = new ogg.Encoder();
 var file = __dirname + '/AmorFati.ogg'
 var disco = new Firebase('https://disco-sync.firebaseio.com/');
-decoder.on('stream', function (stream) {
-  console.log('new "stream":', stream.serialno);
-
-  // emitted for each `ogg_packet` instance in the stream.
-  stream.on('data', function (packet) {
-    console.log('got "packet":', packet.packetno);
-		disco.child('stream').push(packet);
-  });
-
-  // emitted after the last packet of the stream
-  stream.on('end', function () {
-    console.log('got "end":', stream.serialno);
-  });
-});
-
 // pipe the ogg file to the Decoder
-fs.createReadStream(file).pipe(decoder);
+fs.createReadStream(file);
+fs.on('data', function(packet) {
+	console.log("sending packet");
+	disco.child('stream').push(outStream);
+});
 
 /** 
  * Initialize listener

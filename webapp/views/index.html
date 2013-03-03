@@ -103,5 +103,30 @@
 	disco.child('stream').on('child_added', function(stream) {
 		stream_list.push(stream);
 	});
+
+  var context = new webkitAudioContext()
+		, nextStartTime = 0
+    , numSegments = 0;
+
+  decodeError = function() {
+    return console.log("Decoding failed");
+  };
+
+  playAudio = function(buffer) {
+    var source;
+    source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start(nextStartTime);
+    if (nextStartTime === 0) {
+      return nextStartTime = context.currentTime;
+    } else {
+      return nextStartTime = nextStartTime + buffer.duration;
+    }
+  };
+
+	function play(data) {
+		context.decodeAudioData(data, playAudio, decodeError);
+	}
 </script>
 </html>
