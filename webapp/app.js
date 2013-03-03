@@ -1,3 +1,8 @@
+/**
+ * Variables
+ */
+var port = 1337;
+
 
 /**
  * Module dependencies.
@@ -10,10 +15,14 @@ var express = require('express')
   , path = require('path')
 	, fs = require('fs')
 
-var app = express();
 
+/**
+ * Create and configure express.
+ */
+
+var app = express();
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || port);
   app.set('views', __dirname + '/views');
 	app.use(express['static'](__dirname + '/views'));
   app.use(express.favicon());
@@ -24,17 +33,27 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
+
+/**
+ * Set development mode for debugging.
+ */
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+
+/**
+ * Define our routes.
+ */
+
+// Index
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/polynation.mp3', function(request, response){
-	var filename = "polynation.mp3";
+// Sample song with chunked responses
+app.get('/polynation.mp3', function(request, response) {
+	var filename = "public/songs/polynation.mp3";
 	fs.readFile(filename, "binary", function(err, file) {
 		var header = {};
-		if(typeof request.headers.range !== 'undefined') {
+		if (typeof request.headers.range !== 'undefined') {
 			var range = request.headers.range; 
 			var parts = range.replace(/bytes=/, "").split("-"); 
 			var partialstart = parts[0]; 
@@ -55,13 +74,17 @@ app.get('/polynation.mp3', function(request, response){
 			response.write(file.slice(start, end)+'0', "binary");
 		}
 		else{
-			response.writeHead(200, header );
+			response.writeHead(200, header);
 			response.write(file, "binary");
 		}
 		response.end();
 	});
 });
 
+
+/** 
+ * Initialize listener
+ */
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
