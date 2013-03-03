@@ -25,6 +25,5 @@ $(document).ready(function(){
 		$(".closeDJ").animate({opacity : 0}, "slow");
 		$(".interfaceDJ").animate({opacity : 0}, "fast");
 		$(".interfaceDJ").animate({top : "1000px"}, "fast");
-		$(".letsDJ").animate({opacity : 0.0}, "slow");
 	});
 });
