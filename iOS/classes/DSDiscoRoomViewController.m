@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.title = @"DiscoSync";
+	self.navigationItem.title = @"Now Playing";
 }
 
 - (void)didReceiveMemoryWarning {

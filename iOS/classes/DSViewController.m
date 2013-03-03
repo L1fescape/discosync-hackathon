@@ -19,11 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	//Set nav bar style and nav item title
-	self.navigationItem.title = @"Now Playing";
+	self.navigationItem.title = @"Discos";
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	
 	//Set table view appearance
-	self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
 	self.tableView.rowHeight = 90.0f;
 	self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rock"]];
 	
@@ -37,19 +37,56 @@
 */}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 20;
+	return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	DSCell *cell = [[DSCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-	cell.textLabel.text = @"DJ NAME";
-	cell.detailTextLabel.text = @"Genre";
-	cell.listenerCount = @"123";
+	
+	if (indexPath.row == 0) {
+		cell.textLabel.text = @"Will Newton";
+		cell.detailTextLabel.text = @"Moombahton, Dutch";
+		cell.listenerCount = @"123";
+	}
+	
+	else if (indexPath.row == 1) {
+		cell.textLabel.text = @"Knife Party";
+		cell.detailTextLabel.text = @"EDM";
+		cell.listenerCount = @"122";
+	}
+	
+	else if (indexPath.row == 2) {
+		cell.textLabel.text = @"Deadmau5";
+		cell.detailTextLabel.text = @"House";
+		cell.listenerCount = @"122";
+	}
+	
+	else if (indexPath.row == 3) {
+		cell.textLabel.text = @"The Glitch Mob";
+		cell.detailTextLabel.text = @"Glitch";
+		cell.listenerCount = @"9999999";
+	}
+	
+	else if (indexPath.row == 4) {
+		cell.textLabel.text = @"Dilon Francis";
+		cell.detailTextLabel.text = @"Whatever he plays";
+		cell.listenerCount = @"1234";
+	}
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self.navigationController pushViewController:[[DSDiscoRoomViewController alloc] init] animated:YES];
+	
+	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
+	room.view.backgroundColor = [UIColor clearColor];
+	
+	UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+	
+	if (indexPath.row == 0) {
+		[room.view ]
+	}
+	
+	[self.navigationController pushViewController:room animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
