@@ -26,6 +26,10 @@
 	return _chunkQueue;
 }
 
+- (void)addObject:(id)object {
+	[self.chunkQueue addObject:object];
+}
+
 - (id)removeFirstObject {
 	id object = [self.chunkQueue objectAtIndex:0];
 	[self.chunkQueue removeObjectAtIndex:0];
