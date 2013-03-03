@@ -10,8 +10,7 @@
 
 @implementation DSCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
@@ -19,11 +18,20 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)layoutSubviews {
+	[super layoutSubviews];
+	
+	self.numberOfListeners = [[UILabel alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 20, self.bounds.size.width, 20)];
+	self.numberOfListeners.textAlignment = UITextAlignmentRight;
+	self.numberOfListeners.backgroundColor = [UIColor clearColor];
+	self.numberOfListeners.text = [self.listenerCount stringByAppendingString:@" listeners"];
+	[self.contentView addSubview:self.numberOfListeners];
 }
 
 @end
