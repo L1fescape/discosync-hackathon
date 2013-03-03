@@ -11,6 +11,8 @@
 		08490AC016E2BA1A007CF3E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */; };
 		08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AC116E2BA24007CF3E6 /* CFNetwork.framework */; };
 		08490AC416E2BA2B007CF3E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */; };
+		08490AEE16E2CFEE007CF3E6 /* DSDiscoRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */; };
+		08490AF616E2DCED007CF3E6 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 08490ADF16E2CD5D007CF3E6 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -32,6 +34,8 @@
 		08490AC316E2BA2B007CF3E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		08490ADE16E2CD5D007CF3E6 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		08490ADF16E2CD5D007CF3E6 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		08490AEC16E2CFED007CF3E6 /* DSDiscoRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDiscoRoomViewController.h; sourceTree = "<group>"; };
+		08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDiscoRoomViewController.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +144,8 @@
 			children = (
 				6595615516E2AEE700481BA5 /* DSViewController.h */,
 				6595615616E2AEE700481BA5 /* DSViewController.m */,
+				08490AEC16E2CFED007CF3E6 /* DSDiscoRoomViewController.h */,
+				08490AED16E2CFED007CF3E6 /* DSDiscoRoomViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -222,9 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08490AF616E2DCED007CF3E6 /* AudioStreamer.m in Sources */,
 				6595614716E2AEE700481BA5 /* main.m in Sources */,
 				6595614B16E2AEE700481BA5 /* DSAppDelegate.m in Sources */,
 				6595615716E2AEE700481BA5 /* DSViewController.m in Sources */,
+				08490AEE16E2CFEE007CF3E6 /* DSDiscoRoomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
