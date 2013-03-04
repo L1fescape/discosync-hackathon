@@ -15,4 +15,6 @@
 @property (nonatomic, strong) UILabel *genre;
 @property (nonatomic, strong) UILabel *listeners;
 
+- (void)configureLabels;
+
 @end

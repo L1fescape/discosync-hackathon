@@ -15,6 +15,8 @@
     if (self) {
         // Initialization code
 		self.selectionStyle = UITableViewCellSelectionStyleGray;
+		self.displayTopBorder = YES;
+		self.displayBottomBorder = YES;
     }
     return self;
 }
@@ -55,13 +57,17 @@
 	self.numberOfListeners.shadowOffset = CGSizeMake(0,1);
 	[self.contentView addSubview:self.numberOfListeners];
 	
-	self.lowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 1)];
-	self.lowerBorder.backgroundColor = [UIColor blackColor];
-	[self.contentView addSubview:self.lowerBorder];
+	if (self.displayBottomBorder) {
+		UIView *lowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 1)];
+		lowerBorder.backgroundColor = [UIColor blackColor];
+		[self.contentView addSubview:lowerBorder];
+	}
 	
-	self.upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
-	self.upperBorder.backgroundColor = [UIColor darkGrayColor];
-	[self.contentView addSubview:self.upperBorder];
+	if (self.displayTopBorder) {
+		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
+		upperBorder.backgroundColor = [UIColor darkGrayColor];
+		[self.contentView addSubview:upperBorder];
+	}
 }
 
 @end
