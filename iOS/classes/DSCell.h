@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) UILabel *numberOfListeners;
 @property (nonatomic, strong) NSString *listenerCount;
+@property (nonatomic, strong) UIView *upperBorder;
+@property (nonatomic, strong) UIView *lowerBorder;
 
 @end

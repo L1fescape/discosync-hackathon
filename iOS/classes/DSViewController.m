@@ -20,6 +20,10 @@
     [super viewDidLoad];
     [self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	//Set nav bar style and nav item title
+	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
+	UIImageView *headerGradient = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,44)];
+	headerGradient.image = [UIImage imageNamed:@"header-bar"];
+	[self.navigationController.navigationBar insertSubview:headerGradient atIndex:1];
 	self.navigationItem.title = @"Discos";
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 	

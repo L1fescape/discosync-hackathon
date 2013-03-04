@@ -55,13 +55,13 @@
 	self.numberOfListeners.shadowOffset = CGSizeMake(0,1);
 	[self.contentView addSubview:self.numberOfListeners];
 	
-	UIView *lowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 1)];
-	lowerBorder.backgroundColor = [UIColor blackColor];
-	[self.contentView addSubview:lowerBorder];
+	self.lowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 1)];
+	self.lowerBorder.backgroundColor = [UIColor blackColor];
+	[self.contentView addSubview:self.lowerBorder];
 	
-	UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
-	upperBorder.backgroundColor = [UIColor darkGrayColor];
-	[self.contentView addSubview:upperBorder];
+	self.upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
+	self.upperBorder.backgroundColor = [UIColor darkGrayColor];
+	[self.contentView addSubview:self.upperBorder];
 }
 
 @end
