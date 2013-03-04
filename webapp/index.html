@@ -18,6 +18,8 @@
 	<!-- Backbone Views and Router-->
 	<script type="text/javascript" src='js/views.js'></script>
 	<script type="text/javascript" src='js/router.js'></script>
+	<!-- Additional Bindings -->
+	<script type="text/javascript" src='js/bindings.js'></script>
 </head>
 <body>
 	<div id="disclaimer">Disclaimer: This app is in alpha and will contain bugs. <a href="mailto:andrew@akenn.org">Feedback is good karma.</a></div>
@@ -78,6 +80,9 @@
 		window.RoomFull = new RoomFullView({});
 		// start the router
 		Backbone.history.start()
+
+		// bind additional buttons
+		bindings.bind();
 	});
 
 	// Firebase

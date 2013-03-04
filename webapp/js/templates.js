@@ -21,7 +21,7 @@ var templates = {
 	itemRoom_inner : function() {
 		return '<div class="djname">{{ name }}</div> \
 					  <div class="genre">{{ genre }}</div> \
-						<div class="listeners">{{ listeners }} people listenings</div> \
+						<div class="listeners">{{ listeners }} people listening</div> \
 						<div class="carrot"></div>';
 	}
 };
