@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DSCell.h"
 
 @interface DSViewController : UITableViewController
 

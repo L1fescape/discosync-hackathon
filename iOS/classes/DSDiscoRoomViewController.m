@@ -7,7 +7,6 @@
 //
 
 #import "DSDiscoRoomViewController.h"
-#import <Firebase/Firebase.h>
 
 @interface DSDiscoRoomViewController ()
 
@@ -28,7 +27,7 @@
 		_DJName.backgroundColor = [UIColor clearColor];
 		_DJName.textColor = [UIColor whiteColor];
 		_DJName.font = [UIFont boldSystemFontOfSize:48.0f];
-		_DJName.numberOfLines = 2;
+		_DJName.numberOfLines = 0;
 		_DJName.shadowColor = [UIColor blackColor];
 		_DJName.shadowOffset = CGSizeMake(0, 1);
 		_DJName.lineBreakMode = NSLineBreakByWordWrapping;
@@ -62,12 +61,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.title = @"Now Playing";
+	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	
 	[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.DJName];
 	[self.view addSubview:self.genre];
 	[self.view addSubview:self.listeners];
+}
+
+- (void)configureLabels {
+	[self.DJName sizeToFit];
+	[self.genre sizeToFit];
+	[self.listeners sizeToFit];
+	
+	CGRect DJRect = self.DJName.frame;
+	CGRect genreRect = self.genre.frame;
+	CGRect listenersRect = self.listeners.frame;
+	
+	genreRect.origin.y = DJRect.origin.y + DJRect.size.height - 8;
+	self.genre.frame = genreRect;
+	
+	listenersRect.origin.y = genreRect.origin.y + genreRect.size.height;
+	self.listeners.frame = listenersRect;
 }
 
 - (void)didReceiveMemoryWarning {
