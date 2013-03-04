@@ -44,7 +44,12 @@
 - (void)updateDisplay {
 	self.textLabel.text = [self.latestSnapshotDict valueForKey:@"name"];
 	self.detailTextLabel.text = [self.latestSnapshotDict valueForKey:@"genre"];
-	self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	if ([self.latestSnapshotDict valueForKey:@"listeners"]) {
+		self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	}
+	else {
+		self.listenerCount = @"0";
+	}
 	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
