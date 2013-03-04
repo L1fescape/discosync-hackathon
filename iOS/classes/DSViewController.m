@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	//Set nav bar style and nav item title
 	self.navigationItem.title = @"Discos";
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
@@ -46,31 +47,31 @@
 	if (indexPath.row == 0) {
 		cell.textLabel.text = @"Will Newton";
 		cell.detailTextLabel.text = @"Moombahton, Dutch";
-		cell.listenerCount = @"123";
+		cell.listenerCount = @"42";
 	}
 	
 	else if (indexPath.row == 1) {
 		cell.textLabel.text = @"Knife Party";
-		cell.detailTextLabel.text = @"EDM";
-		cell.listenerCount = @"122";
+		cell.detailTextLabel.text = @"Dubstep, Electro";
+		cell.listenerCount = @"901";
 	}
 	
 	else if (indexPath.row == 2) {
 		cell.textLabel.text = @"Deadmau5";
 		cell.detailTextLabel.text = @"House";
-		cell.listenerCount = @"122";
+		cell.listenerCount = @"7821";
 	}
 	
 	else if (indexPath.row == 3) {
 		cell.textLabel.text = @"The Glitch Mob";
-		cell.detailTextLabel.text = @"Glitch";
-		cell.listenerCount = @"9999999";
+		cell.detailTextLabel.text = @"Glitch Hop";
+		cell.listenerCount = @"431";
 	}
 	
 	else if (indexPath.row == 4) {
 		cell.textLabel.text = @"Dilon Francis";
-		cell.detailTextLabel.text = @"Whatever he plays";
-		cell.listenerCount = @"1234";
+		cell.detailTextLabel.text = @"Moombahton";
+		cell.listenerCount = @"23";
 	}
 	return cell;
 }
