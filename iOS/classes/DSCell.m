@@ -10,6 +10,21 @@
 
 @implementation DSCell
 
+- (void)setFirebase:(Firebase *)firebase {
+	_firebase = firebase;
+	[_firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
+		[self performSelectorOnMainThread:@selector(setLatestSnapshot:) withObject:snapshot waitUntilDone:NO];
+	}];
+}
+
+- (void)setLatestSnapshot:(FDataSnapshot *)latestSnapshot {
+	_latestSnapshot = latestSnapshot;
+	self.textLabel.text = [latestSnapshot.val valueForKey:@"name"];
+	self.detailTextLabel.text = [latestSnapshot.val valueForKey:@"genre"];
+	self.listenerCount = [NSString stringWithFormat:@"%@", [latestSnapshot.val valueForKey:@"listeners"]];
+	self.targetURL = [NSURL URLWithString:[latestSnapshot.val valueForKey:@"songurl"]];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {

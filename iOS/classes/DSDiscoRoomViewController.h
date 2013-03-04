@@ -13,7 +13,10 @@
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) UILabel *DJName;
 @property (nonatomic, strong) UILabel *genre;
-@property (nonatomic, strong) UILabel *listeners;
+@property (nonatomic, strong) UILabel *listenerCount;
+
+@property (nonatomic, strong) Firebase *firebase;
+@property (nonatomic, strong) FDataSnapshot *latestSnapshot;
 @property (nonatomic, strong) NSURL *targetURL;
 
 - (void)configureLabels;
