@@ -55,5 +55,16 @@ var bindings = {
 			$(".aboutButton").css({display : "block"});
 			$(".aboutButton").animate({opacity : 1}, "slow" );
 		});
+	$("input[type='submit']").click(function() {
+
+		$.ajax({
+			  url: "/login",
+				type: "post",
+			  data: { username : $("input.username").val(), password : $("input.password").val() }
+		}).done(function() {
+			  $(this).addClass("done");
+		});
+		return false;
+	});
 	}
 };
