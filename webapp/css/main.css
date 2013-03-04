@@ -266,11 +266,42 @@ html{
 	position:absolute;
 	top:1000px;
 	left:100px;
-	background:url(../img/djcomingsoon.png);
+	background:url(../img/signup-large.png);
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:600px auto;
 }
+
+.interfaceDJ input {
+	border:0;
+	border-bottom:2px solid #fff;
+	font-size:18px;
+	color:#333;
+	background:rgba(255,255,255,0.9);
+	padding:10px;
+	margin-left:8px;
+}
+
+.interfaceDJ input:first-child {
+}
+
+.submit {
+	border-bottom:0!important;
+	background:rgba(170,184,255,0.9)!important;
+	transition: linear 0.1s;
+	/* Firefox 4 */
+	-moz-transition:linear 0.1s;
+	/* Safari and Chrome */
+	-webkit-transition:linear 0.1s;
+	/* Opera */
+	-o-transition:linear 0.1s;
+}
+
+.submit:hover {
+	background:rgba(255,255,255,1)!important;
+	box-shadow:0px 0px 8px #fff;
+}
+
 
 
 
