@@ -30,7 +30,6 @@
 	else {
 		for (NSString *key in [latestSnapshotDict allKeys]) {
 			if ([_latestSnapshotDict objectForKey:key]) {
-				id obj = [_latestSnapshotDict objectForKey:key];
 				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
 			}
 			else {

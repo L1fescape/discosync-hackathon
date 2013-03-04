@@ -40,7 +40,6 @@
 }
 
 - (void)updateDisplay {
-	NSLog(@"updateDisplay %@", self.latestSnapshotDict);
 	self.textLabel.text = [self.latestSnapshotDict valueForKey:@"name"];
 	self.detailTextLabel.text = [self.latestSnapshotDict valueForKey:@"genre"];
 	self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
