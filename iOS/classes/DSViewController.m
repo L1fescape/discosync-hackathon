@@ -9,8 +9,11 @@
 #import "DSViewController.h"
 #import "DSDiscoRoomViewController.h"
 #import "DSCell.h"
+#import <Firebase/Firebase.h>
 
 @interface DSViewController ()
+
+@property (nonatomic, strong) NSArray *rooms;
 
 @end
 
@@ -22,6 +25,9 @@
 	
 	//Set nav bar style and title image
 	[self setupNavigationBar];
+	
+	//Initialize firebase
+	[self setupFirebase];
 	
 	//Set table view styles
 	[self setupTableView];
@@ -42,6 +48,22 @@
 	
 }
 
+- (void)setupFirebase {
+	Firebase* f1 = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
+	[f1 on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
+		
+		NSDictionary *snapVal = [snapshot val];
+		NSMutableArray *arrayOfRooms = [[NSMutableArray alloc] init];
+		
+		for (NSString *roomKey in snapVal) {
+			[arrayOfRooms addObject:[snapVal objectForKey:roomKey]];
+		}
+		
+		self.rooms = [arrayOfRooms copy];
+		[self.tableView reloadData];
+	}];
+}
+
 - (void)setupTableView {
 	
 	self.tableView.separatorColor = [UIColor clearColor];
@@ -53,8 +75,7 @@
 #pragma mark - table view data source methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	//@TODO: In the future, this would query a server to find out how many DJ's are present at a given event
-	return 5;
+	return self.rooms.count;
 	
 }
 
@@ -63,41 +84,17 @@
 	DSCell *cell = [[DSCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 	
 	if (indexPath.row == 0) {
-		cell.textLabel.text = @"Will Newton";
-		cell.detailTextLabel.text = @"Moombahton, Dutch";
-		cell.listenerCount = @"42";
 		cell.displayTopBorder = NO;
-		cell.targetURL = [NSURL URLWithString:@"http://10.100.30.229:8000/spin"];
 	}
 	
-	else if (indexPath.row == 1) {
-		cell.textLabel.text = @"Knife Party";
-		cell.detailTextLabel.text = @"Dubstep, Electro";
-		cell.listenerCount = @"901";
-		cell.targetURL = [NSURL URLWithString:@""];
-	}
-	
-	else if (indexPath.row == 2) {
-		cell.textLabel.text = @"Deadmau5";
-		cell.detailTextLabel.text = @"House";
-		cell.listenerCount = @"7821";
-		cell.targetURL = [NSURL URLWithString:@""];
-	}
-	
-	else if (indexPath.row == 3) {
-		cell.textLabel.text = @"The Glitch Mob";
-		cell.detailTextLabel.text = @"Glitch Hop";
-		cell.listenerCount = @"431";
-		cell.targetURL = [NSURL URLWithString:@""];
-	}
-	
-	else if (indexPath.row == 4) {
-		cell.textLabel.text = @"Dilon Francis";
-		cell.detailTextLabel.text = @"Moombahton";
-		cell.listenerCount = @"23";
+	else if (indexPath.row == self.rooms.count - 1) {
 		cell.displayBottomBorder = NO;
-		cell.targetURL = [NSURL URLWithString:@""];
 	}
+	
+	cell.textLabel.text = [self.rooms[indexPath.row] valueForKey:@"name"];
+	cell.detailTextLabel.text = [self.rooms[indexPath.row] valueForKey:@"genre"];
+	cell.listenerCount = [NSString stringWithFormat:@"%@", [self.rooms[indexPath.row] valueForKey:@"listeners"]];
+	cell.targetURL = [NSURL URLWithString:[self.rooms[indexPath.row] valueForKey:@"songurl"]];
 	
 	return cell;
 	
