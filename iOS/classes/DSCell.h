@@ -10,4 +10,7 @@
 
 @interface DSCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *numberOfListeners;
+@property (nonatomic, strong) NSString *listenerCount;
+
 @end

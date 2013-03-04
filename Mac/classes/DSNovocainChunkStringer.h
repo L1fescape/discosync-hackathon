@@ -10,6 +10,10 @@
 
 @interface DSNovocainChunkStringer : NSObject
 
+// Methods to manipulate the bad data structure
+- (void)addObject:(id)object;
+- (id)removeFirstObject;
+
 - (void)stringNewAudio:(float *)newData numFrames:(UInt32)thisNumFrames numChannels:(UInt32)thisNumChannels;
 - (void)destringNewAudio:(float *)newData numFrames:(UInt32)thisNumFrames numChannels:(UInt32)thisNumChannels;
 @end
