@@ -5,12 +5,9 @@ var WorkspaceRouter = Backbone.Router.extend({
 	},
 
 	index : function() {
-		// Stop all audio
-		var audioPlayer = document.getElementsByTagName('audio')[0];
-		if (audioPlayer) {
-			audioPlayer.pause();
-			audioPlayer.currentTime = 0;
-		}
+		// Pause all audio 
+		var audio = $('audio')[0];
+		audio.pause(); 
 		// Transition
 		$(".slider").animate({left : "0"}, "fast" );
 		$(".app_room").animate({opacity : 0}, "fast" );
