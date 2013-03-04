@@ -30,9 +30,11 @@
 		0889FAF416E41FEF00223407 /* room-3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0889FAF116E41FEF00223407 /* room-3@2x.png */; };
 		0889FAFF16E445CC00223407 /* header-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0889FAFD16E445CC00223407 /* header-bar.png */; };
 		0889FB0016E445CC00223407 /* header-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0889FAFE16E445CC00223407 /* header-bar@2x.png */; };
+		0898504E16E48BC400B34564 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889FB2016E4889400223407 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0898504F16E48C8E00B34564 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */; };
+		0898506316E4915E00B34564 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		089EA48316E325D600F03AC0 /* DSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089EA48216E325D600F03AC0 /* DSCell.m */; };
 		08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084911A216E31584007CF3E6 /* Firebase.framework */; };
-		08B425EB16E3358400A2C729 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -79,6 +81,8 @@
 		0889FAF116E41FEF00223407 /* room-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room-3@2x.png"; sourceTree = "<group>"; };
 		0889FAFD16E445CC00223407 /* header-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-bar.png"; sourceTree = "<group>"; };
 		0889FAFE16E445CC00223407 /* header-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-bar@2x.png"; sourceTree = "<group>"; };
+		0889FB1F16E4889400223407 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		0889FB2016E4889400223407 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		089EA48116E325D600F03AC0 /* DSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCell.h; sourceTree = "<group>"; };
 		089EA48216E325D600F03AC0 /* DSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCell.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,12 +108,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0898506316E4915E00B34564 /* Security.framework in Frameworks */,
+				0898504F16E48C8E00B34564 /* AudioToolbox.framework in Frameworks */,
 				0889FAA316E3F4AA00223407 /* libicucore.dylib in Frameworks */,
 				08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */,
 				08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */,
 				6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */,
 				08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */,
-				08B425EB16E3358400A2C729 /* Security.framework in Frameworks */,
 				6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */,
 				6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -118,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0889FB1D16E4888600223407 /* Audio Streamer */ = {
+			isa = PBXGroup;
+			children = (
+				0889FB1F16E4889400223407 /* AudioStreamer.h */,
+				0889FB2016E4889400223407 /* AudioStreamer.m */,
+			);
+			name = "Audio Streamer";
+			sourceTree = "<group>";
+		};
 		089EA48016E325C400F03AC0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +195,7 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0889FB1D16E4888600223407 /* Audio Streamer */,
 				089EA48016E325C400F03AC0 /* UI */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
@@ -344,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0898504E16E48BC400B34564 /* AudioStreamer.m in Sources */,
 				6595614716E2AEE700481BA5 /* main.m in Sources */,
 				6595614B16E2AEE700481BA5 /* DSAppDelegate.m in Sources */,
 				6595615716E2AEE700481BA5 /* DSViewController.m in Sources */,
@@ -401,6 +417,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
