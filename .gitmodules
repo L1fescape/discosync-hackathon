@@ -4,3 +4,6 @@
 [submodule "iOS/libraries/socket.IO"]
 	path = iOS/libraries/socket.IO
 	url = git://github.com/pkyeck/socket.IO-objc.git
+[submodule "iOS/libraries/MBProgressHUD"]
+	path = iOS/libraries/MBProgressHUD
+	url = git://github.com/jdg/MBProgressHUD.git
