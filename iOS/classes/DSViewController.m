@@ -80,12 +80,21 @@
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
 	room.view.backgroundColor = [UIColor clearColor];
 	
-	UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+	UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:room.view.bounds];
 	
-	if (indexPath.row == 0) {
-		[room.view ]
+	if (indexPath.row % 3 == 0) {
+		backgroundView.image = [UIImage imageNamed:@"room-1"];
 	}
 	
+	else if (indexPath.row % 3 == 1) {
+		backgroundView.image = [UIImage imageNamed:@"room-2"];
+	}
+	
+	else if (indexPath.row % 3 == 2) {
+		backgroundView.image = [UIImage imageNamed:@"room-3"];
+	}
+	
+	[room.view addSubview:backgroundView];
 	[self.navigationController pushViewController:room animated:YES];
 }
 
