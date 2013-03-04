@@ -78,23 +78,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
-	room.view.backgroundColor = [UIColor clearColor];
-	
-	UIImageView *backgroundView = [[UIImageView alloc] initWithFrame:room.view.bounds];
+	DSCell *cell = (DSCell *)[tableView cellForRowAtIndexPath:indexPath];
+	room.DJName.text = cell.textLabel.text;
+	room.genre.text = cell.detailTextLabel.text;
+	room.listeners.text = cell.numberOfListeners.text;
 	
 	if (indexPath.row % 3 == 0) {
-		backgroundView.image = [UIImage imageNamed:@"room-1"];
+		room.backgroundView.image = [UIImage imageNamed:@"room-1"];
 	}
 	
 	else if (indexPath.row % 3 == 1) {
-		backgroundView.image = [UIImage imageNamed:@"room-2"];
+		room.backgroundView.image = [UIImage imageNamed:@"room-2"];
 	}
 	
 	else if (indexPath.row % 3 == 2) {
-		backgroundView.image = [UIImage imageNamed:@"room-3"];
+		room.backgroundView.image = [UIImage imageNamed:@"room-3"];
 	}
 	
-	[room.view addSubview:backgroundView];
 	[self.navigationController pushViewController:room animated:YES];
 }
 
