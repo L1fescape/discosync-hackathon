@@ -9,15 +9,38 @@
 #import "DSViewController.h"
 #import "DSDiscoRoomViewController.h"
 #import "DSCell.h"
-#import <Firebase/Firebase.h>
+#import "MBProgressHUD.h"
 
 @interface DSViewController ()
 
+@property (nonatomic, strong) Firebase *firebase;
+@property (nonatomic, strong) NSMutableDictionary *latestSnapshotDict;
 @property (nonatomic, strong) NSArray *rooms;
 
 @end
 
 @implementation DSViewController
+
+- (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
+	[MBProgressHUD hideHUDForView:self.view animated:YES];
+	// NSLog(@"new root snapshot: %@", latestSnapshotDict); // can be used to demonstrate firebase bug, lolz
+	if (!_latestSnapshotDict) {
+		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+	}
+	else {
+		for (NSString *key in [latestSnapshotDict allKeys]) {
+			if ([_latestSnapshotDict objectForKey:key]) {
+				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
+			}
+			else {
+				[_latestSnapshotDict setObject:[latestSnapshotDict objectForKey:key] forKey:key];
+			}
+		}
+	}
+
+	self.rooms = [_latestSnapshotDict allKeys];
+	[self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
 	
@@ -32,98 +55,82 @@
 	//Set table view styles
 	[self setupTableView];
 	
+	
+	MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = @"Loading Rooms";
+	
 }
 
 - (void)setupNavigationBar {
-	
 	//Nav bar gradient
-	UIImageView *headerGradient = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,44)];
-	headerGradient.image = [UIImage imageNamed:@"header-bar"];
-	[self.navigationController.navigationBar insertSubview:headerGradient atIndex:1];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-	
+	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header-bar"] forBarMetrics:UIBarMetricsDefault];
+
 	//Nav item image
 	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	self.navigationItem.title = @"Discos"; //Not visible, but used to set backButton text on pushed views
-	
 }
 
 - (void)setupFirebase {
-	Firebase* f1 = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
-	[f1 on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
-		
-		NSDictionary *snapVal = [snapshot val];
-		NSMutableArray *arrayOfRooms = [[NSMutableArray alloc] init];
-		
-		for (NSString *roomKey in snapVal) {
-			[arrayOfRooms addObject:[snapVal objectForKey:roomKey]];
-		}
-		
-		self.rooms = [arrayOfRooms copy];
-		[self.tableView reloadData];
+	self.firebase = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
+	[self.firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
+		NSLog(@"Main room info updated");
+		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
 	}];
 }
 
 - (void)setupTableView {
-	
 	self.tableView.separatorColor = [UIColor clearColor];
 	self.tableView.rowHeight = 90.0f;
 	self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rock"]];
-	
+	[self.tableView reloadData];
 }
 
 #pragma mark - table view data source methods
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.rooms.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	DSCell *cell = [[DSCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-	
+	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
+	NSLog(@"Generating cell for roomName: %@", roomName);
+	cell.firebase = [self.firebase child:roomName];
+	cell.latestSnapshotDict = [self.latestSnapshotDict objectForKey:roomName];
+
 	if (indexPath.row == 0) {
 		cell.displayTopBorder = NO;
 	}
-	
+
 	else if (indexPath.row == self.rooms.count - 1) {
 		cell.displayBottomBorder = NO;
 	}
-	
-	cell.textLabel.text = [self.rooms[indexPath.row] valueForKey:@"name"];
-	cell.detailTextLabel.text = [self.rooms[indexPath.row] valueForKey:@"genre"];
-	cell.listenerCount = [NSString stringWithFormat:@"%@", [self.rooms[indexPath.row] valueForKey:@"listeners"]];
-	cell.targetURL = [NSURL URLWithString:[self.rooms[indexPath.row] valueForKey:@"songurl"]];
-	
+
 	return cell;
-	
 }
 
 #pragma mark table view delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+	NSLog(@"Room clicked");
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
-	DSCell *cell = (DSCell *)[tableView cellForRowAtIndexPath:indexPath];
-	room.DJName.text = cell.textLabel.text;
-	room.genre.text = cell.detailTextLabel.text;
-	room.listeners.text = cell.numberOfListeners.text;
-	
+	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
+	room.firebase = [self.firebase child:roomName];
+	room.latestSnapshotDict = [self.latestSnapshotDict objectForKey:roomName];
+
 	if (indexPath.row % 3 == 0) {
 		room.backgroundView.image = [UIImage imageNamed:@"room-1"];
 	}
-	
+
 	else if (indexPath.row % 3 == 1) {
 		room.backgroundView.image = [UIImage imageNamed:@"room-2"];
 	}
-	
+
 	else if (indexPath.row % 3 == 2) {
 		room.backgroundView.image = [UIImage imageNamed:@"room-3"];
 	}
-	
-	[room configureLabels];
-	room.targetURL = cell.targetURL;
-	
+
+	NSLog(@"Pushing room");
 	[self.navigationController pushViewController:room animated:YES];
 	
 }

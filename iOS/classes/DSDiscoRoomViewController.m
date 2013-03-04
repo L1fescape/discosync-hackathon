@@ -17,6 +17,31 @@
 
 @implementation DSDiscoRoomViewController
 
+- (void)setFirebase:(Firebase *)firebase {
+	_firebase = firebase;
+	[_firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
+		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
+	}];
+}
+
+- (void)setLatestSnapshotDict:(NSDictionary *)latestSnapshotDict {
+	if (!_latestSnapshotDict) {
+		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+	}
+	else {
+		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+	}
+	[self updateDisplay];
+}
+
+- (void)setTargetURL:(NSURL *)targetURL {
+	if (![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
+		NSLog(@"targetURL has changed");
+		_targetURL = targetURL;
+		// restart the stream, the URL has changed
+	}
+}
+
 - (UIImageView *)backgroundView {
 	if (!_backgroundView) {
 		_backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
@@ -50,37 +75,49 @@
 	return _genre;
 }
 
-- (UILabel *)listeners {
-	if (!_listeners) {
-		_listeners = [[UILabel alloc] initWithFrame:CGRectMake(8, 176, 320, 40)];
-		_listeners.backgroundColor = [UIColor clearColor];
-		_listeners.textColor = [UIColor whiteColor];
-		_listeners.font = [UIFont systemFontOfSize:28.0f];
-		_listeners.shadowColor = [UIColor blackColor];
-		_listeners.shadowOffset = CGSizeMake(0,1);
+- (UILabel *)listenerCount {
+	if (!_listenerCount) {
+		_listenerCount = [[UILabel alloc] initWithFrame:CGRectMake(8, 176, 320, 40)];
+		_listenerCount.backgroundColor = [UIColor clearColor];
+		_listenerCount.textColor = [UIColor whiteColor];
+		_listenerCount.font = [UIFont systemFontOfSize:28.0f];
+		_listenerCount.shadowColor = [UIColor blackColor];
+		_listenerCount.shadowOffset = CGSizeMake(0,1);
 	}
-	return _listeners;
+	return _listenerCount;
 }
 
 - (void)viewDidLoad {
+	NSLog(@"Disco room didload");
     [super viewDidLoad];
-	//[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
+	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	
 	[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.DJName];
 	[self.view addSubview:self.genre];
-	[self.view addSubview:self.listeners];
+	[self.view addSubview:self.listenerCount];
+	[self configureLabels];
 	
 	//Set up streamer and start pulling audio
 	[self setupStreamer];
+	NSLog(@"view didload ended");
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.streamer start];
+	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] + 1;
+	NSLog(@"Listeners: %@ => %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
+	[self.firebase update:@{@"listeners": [NSNumber numberWithInt:listeners]}];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[self.streamer stop];
+	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] - 1;
+	if (listeners >= 0) {
+		NSLog(@"Decrementing listeners to %i", listeners);
+		[self.firebase update:@{@"listeners": [NSNumber numberWithInt:listeners]}];
+	}
 }
 
 - (void)setupStreamer {
@@ -90,22 +127,24 @@
 - (void)configureLabels {
 	[self.DJName sizeToFit];
 	[self.genre sizeToFit];
-	[self.listeners sizeToFit];
-	
+	[self.listenerCount sizeToFit];
+
 	CGRect DJRect = self.DJName.frame;
 	CGRect genreRect = self.genre.frame;
-	CGRect listenersRect = self.listeners.frame;
-	
+	CGRect listenersRect = self.listenerCount.frame;
+
 	genreRect.origin.y = DJRect.origin.y + DJRect.size.height - 8;
 	self.genre.frame = genreRect;
-	
+
 	listenersRect.origin.y = genreRect.origin.y + genreRect.size.height;
-	self.listeners.frame = listenersRect;
+	self.listenerCount.frame = listenersRect;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)updateDisplay {
+	self.DJName.text = [self.latestSnapshotDict valueForKey:@"name"];
+	self.genre.text = [self.latestSnapshotDict valueForKey:@"genre"];
+	self.listenerCount.text = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
 @end

@@ -10,10 +10,15 @@
 
 @interface DSCell : UITableViewCell
 
+@property (nonatomic, strong) Firebase *firebase;
+@property (nonatomic, strong) NSMutableDictionary *latestSnapshotDict;
+
 @property (nonatomic, strong) UILabel *numberOfListeners;
 @property (nonatomic, strong) NSString *listenerCount;
 @property (nonatomic, strong) NSURL *targetURL;
 @property (nonatomic) BOOL displayTopBorder;
 @property (nonatomic) BOOL displayBottomBorder;
+
+- (void)updateDisplay;
 
 @end

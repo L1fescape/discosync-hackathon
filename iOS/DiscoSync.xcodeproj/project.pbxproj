@@ -35,6 +35,7 @@
 		0898506316E4915E00B34564 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		089EA48316E325D600F03AC0 /* DSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089EA48216E325D600F03AC0 /* DSCell.m */; };
 		08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084911A216E31584007CF3E6 /* Firebase.framework */; };
+		08C238CF16E4CB1000485892 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C238CE16E4CAFD00485892 /* MBProgressHUD.m */; };
 		6571C68016E4ABA7000301E2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6571C67F16E4ABA7000301E2 /* AVFoundation.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
@@ -86,6 +87,8 @@
 		0889FB2016E4889400223407 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		089EA48116E325D600F03AC0 /* DSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCell.h; sourceTree = "<group>"; };
 		089EA48216E325D600F03AC0 /* DSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCell.m; sourceTree = "<group>"; };
+		08C238CD16E4CAFD00485892 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		08C238CE16E4CAFD00485892 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		6571C67F16E4ABA7000301E2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		08C238CB16E4CADB00485892 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08C238CC16E4CAF100485892 /* MBProgressHUD */,
+			);
+			name = Libraries;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		08C238CC16E4CAF100485892 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				08C238CD16E4CAFD00485892 /* MBProgressHUD.h */,
+				08C238CE16E4CAFD00485892 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		6595612E16E2AEE700481BA5 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +226,7 @@
 				6595615F16E2AFED00481BA5 /* View Controllers */,
 				0889FB1D16E4888600223407 /* Audio Streamer */,
 				089EA48016E325C400F03AC0 /* UI */,
+				08C238CB16E4CADB00485892 /* Libraries */,
 				6595614116E2AEE700481BA5 /* Supporting Files */,
 			);
 			name = Classes;
@@ -363,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C238CF16E4CB1000485892 /* MBProgressHUD.m in Sources */,
 				0898504E16E48BC400B34564 /* AudioStreamer.m in Sources */,
 				6595614716E2AEE700481BA5 /* main.m in Sources */,
 				6595614B16E2AEE700481BA5 /* DSAppDelegate.m in Sources */,
@@ -461,6 +484,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -477,6 +501,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "classes/DiscoSync-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/classes/DiscoSync-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
