@@ -3,12 +3,18 @@
 	<title>DiscoSync</title>
 	<!-- Style -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href="img/favicon.png">
 	<!-- jQuery -->
-	<script type="text/javascript" src='js/jquery-1.7.1.min.js'></script>
-	<script type="text/javascript" src='js/script.js'></script>
+	<script type="text/javascript" src='libs/jquery.js'></script>
+	<!-- Backbone -->
+	<script type="text/javascript" src='libs/underscore.js'></script>
+	<script type="text/javascript" src='libs/backbone.js'></script>
 	<!-- Firebase -->
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
-	<link rel="icon" type="image/png" href="img/favicon.png">
+	<!-- Backbone Models, Views, and Collections -->
+	<script type="text/javascript" src='js/views.js'></script>
+	<!-- Router -->
+	<script type="text/javascript" src='js/router.js'></script>
 </head>
 <body>
 	<div class="app_main">
@@ -100,35 +106,27 @@
 	<div class="dim"></div>
 </body>
 <script>
-	var stream_list = [];
-	var disco = new Firebase('https://disco-sync.firebaseio.com/');
-	disco.child('stream').on('child_added', function(stream) {
-		stream_list.push(stream);
+	// When the page is ready, do s'awesome things!
+	$(document).ready(function() {
+		// init router
+		window.appRouter = new WorkspaceRouter();
+		// create collection of room items
+		window.rooms = {};
+		// and create a view for that
+		window.RoomListView = new RoomListView({});
+		// show the view
+		RoomListView.render();
+		// start the router
+		Backbone.history.start()
 	});
 
-  var context = new webkitAudioContext()
-		, nextStartTime = 0
-    , numSegments = 0;
-
-  decodeError = function() {
-    return console.log("Decoding failed");
-  };
-
-  playAudio = function(buffer) {
-    var source;
-    source = context.createBufferSource();
-    source.buffer = buffer;
-    source.connect(context.destination);
-    source.start(nextStartTime);
-    if (nextStartTime === 0) {
-      return nextStartTime = context.currentTime;
-    } else {
-      return nextStartTime = nextStartTime + buffer.duration;
-    }
-  };
-
-	function play(data) {
-		context.decodeAudioData(data, playAudio, decodeError);
-	}
+	// Firebase
+	var disco = new Firebase('https://disco-sync.firebaseio.com/');
+	disco.child('rooms').on('child_added', function(room) {
+		console.log(room.name());
+		//rooms.append(room);
+		// when a room is added, re-render it
+		//RoomListView.render();
+	});
 </script>
 </html>
