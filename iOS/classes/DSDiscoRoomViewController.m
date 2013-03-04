@@ -150,7 +150,7 @@
 - (void)updateDisplay {
 	self.DJName.text = [self.latestSnapshotDict valueForKey:@"name"];
 	self.genre.text = [self.latestSnapshotDict valueForKey:@"genre"];
-	self.listenerCount.text = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	self.listenerCount.text = [[NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]] stringByAppendingString:@" listening"];
 	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
