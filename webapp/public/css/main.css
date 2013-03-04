@@ -275,10 +275,10 @@ html{
 /*  About  */
 .about {
 	width:560px;
-	height:480px;
+	height:500px;
 	box-shadow:0px 4px 4px rgba(0,0,0,0.5), 0px 2px 8px rgba(255,255,255,0.8) inset;
 	background:rgba(255,255,255,0.6);
-	margin:80px auto 0;
+	margin:50px auto 0;
 	position:absolute;
 	overflow:hidden;
 	border-radius:10px;
@@ -294,6 +294,7 @@ html{
 	text-align: center;
 	letter-spacing:-1px;
 	margin-top:24px;
+	font-weight: normal;
 }
 
 .about h3{
@@ -307,18 +308,7 @@ html{
 	margin-top: 170px;
 }
 
-.about img:first-child{
-	margin-left:40px;
-	border-top-left-radius: 8px;
-	border-bottom-left-radius: 8px;
-}
-
-.about img:last-child{
-	border-top-right-radius: 8px;
-	border-bottom-right-radius: 8px;
-}
-
-.about img {
+.about .team {
 	box-shadow:0px 1px 1px rgba(255,255,255,0.5);
 	margin-bottom:20px;
 	opacity:0.8;
@@ -330,13 +320,59 @@ html{
 	/* Opera */
 	-o-transition:linear 0.1s;
 	float:left;
+	height:120px;
+	width:120px;
+	background-size:120px 120px!important;
+	background-repeat: no-repeat;
+	margin-top:3px;
+	margin-right:-1px;
 }
 
-.about img:hover {
+.about .team:hover {
 	opacity:1;
-	margin-top: 3px;
+	margin-top: 0px;
 	cursor: pointer;
 }
+
+.about a { display: inline; border:0; padding: 0;}
+
+.will {
+	margin-left:42px;
+	border-top-left-radius: 8px;
+	border-bottom-left-radius: 8px;
+	background:url(../img/will-1.jpg);
+}
+
+.will:hover {
+	background:url(../img/will-2.jpg);
+}
+
+.andrew {
+	background:url(../img/andrew-1.jpg);
+}
+
+.andrew:hover {
+	background:url(../img/andrew-2.jpg);
+}
+
+.neal {
+	background:url(../img/neal-1.jpg);
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.neal:hover {
+	background:url(../img/neal-2.jpg);
+}
+
+.tommy {
+	background:url(../img/tommy-1.jpg);
+}
+
+.tommy:hover {
+	background:url(../img/tommy-2.jpg);
+}
+
 
 .aboutButton {
 	height:32px;
