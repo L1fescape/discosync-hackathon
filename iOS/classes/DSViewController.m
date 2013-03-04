@@ -55,6 +55,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	//@TODO: In the future, this would query a server to find out how many DJ's are present at a given event
 	return 5;
+	
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -121,8 +122,8 @@
 	
 	[room configureLabels];
 	
-	[self.navigationController pushViewController:room animated:YES]
-	;
+	[self.navigationController pushViewController:room animated:YES];
+	
 }
 
 - (void)didReceiveMemoryWarning {

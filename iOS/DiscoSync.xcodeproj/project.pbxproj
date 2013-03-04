@@ -79,6 +79,8 @@
 		0889FAF116E41FEF00223407 /* room-3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "room-3@2x.png"; sourceTree = "<group>"; };
 		0889FAFD16E445CC00223407 /* header-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-bar.png"; sourceTree = "<group>"; };
 		0889FAFE16E445CC00223407 /* header-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-bar@2x.png"; sourceTree = "<group>"; };
+		0889FB1F16E4889400223407 /* AudioStreamer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		0889FB2016E4889400223407 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		089EA48116E325D600F03AC0 /* DSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCell.h; sourceTree = "<group>"; };
 		089EA48216E325D600F03AC0 /* DSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCell.m; sourceTree = "<group>"; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0889FB1D16E4888600223407 /* Audio Streamer */ = {
+			isa = PBXGroup;
+			children = (
+				0889FB1F16E4889400223407 /* AudioStreamer.h */,
+				0889FB2016E4889400223407 /* AudioStreamer.m */,
+			);
+			name = "Audio Streamer";
+			sourceTree = "<group>";
+		};
 		089EA48016E325C400F03AC0 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +192,7 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0889FB1D16E4888600223407 /* Audio Streamer */,
 				089EA48016E325C400F03AC0 /* UI */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
