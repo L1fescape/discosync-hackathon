@@ -35,6 +35,7 @@
 		0898506316E4915E00B34564 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		089EA48316E325D600F03AC0 /* DSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089EA48216E325D600F03AC0 /* DSCell.m */; };
 		08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084911A216E31584007CF3E6 /* Firebase.framework */; };
+		6571C68016E4ABA7000301E2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6571C67F16E4ABA7000301E2 /* AVFoundation.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -85,6 +86,7 @@
 		0889FB2016E4889400223407 /* AudioStreamer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		089EA48116E325D600F03AC0 /* DSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCell.h; sourceTree = "<group>"; };
 		089EA48216E325D600F03AC0 /* DSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCell.m; sourceTree = "<group>"; };
+		6571C67F16E4ABA7000301E2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6595613716E2AEE700481BA5 /* DiscoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6595613A16E2AEE700481BA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6595613C16E2AEE700481BA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6571C68016E4ABA7000301E2 /* AVFoundation.framework in Frameworks */,
 				0898506316E4915E00B34564 /* Security.framework in Frameworks */,
 				0898504F16E48C8E00B34564 /* AudioToolbox.framework in Frameworks */,
 				0889FAA316E3F4AA00223407 /* libicucore.dylib in Frameworks */,
@@ -177,6 +180,7 @@
 		6595613916E2AEE700481BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6571C67F16E4ABA7000301E2 /* AVFoundation.framework */,
 				0889FAA216E3F4AA00223407 /* libicucore.dylib */,
 				084911A216E31584007CF3E6 /* Firebase.framework */,
 				0849115C16E3011F007CF3E6 /* Security.framework */,
@@ -195,12 +199,12 @@
 		6595614016E2AEE700481BA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0889FB1D16E4888600223407 /* Audio Streamer */,
-				089EA48016E325C400F03AC0 /* UI */,
 				6595614916E2AEE700481BA5 /* DSAppDelegate.h */,
 				6595614A16E2AEE700481BA5 /* DSAppDelegate.m */,
 				6595615216E2AEE700481BA5 /* MainStoryboard.storyboard */,
 				6595615F16E2AFED00481BA5 /* View Controllers */,
+				0889FB1D16E4888600223407 /* Audio Streamer */,
+				089EA48016E325C400F03AC0 /* UI */,
 				6595614116E2AEE700481BA5 /* Supporting Files */,
 			);
 			name = Classes;

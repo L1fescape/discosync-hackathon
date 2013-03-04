@@ -7,12 +7,23 @@
 //
 
 #import "DSAppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation DSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+
+	// Registers this class as the delegate of the audio session to listen for audio interruptions
+	[[AVAudioSession sharedInstance] setDelegate: self];
+	//Set the audio category of this app to playback.
+	NSError *setCategoryError = nil; [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
+	if (setCategoryError) {
+		//RESPOND APPROPRIATELY
+		NSLog(@"*** Error: Couldn't set category.");
+	}
+
     return YES;
 }
 							
