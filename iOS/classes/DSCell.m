@@ -82,10 +82,28 @@
 		[self.contentView addSubview:lowerBorder];
 	}
 	
+	else {
+		UIView *lowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-2, self.bounds.size.width, 1)];
+		lowerBorder.backgroundColor = [UIColor blackColor];
+		[self.contentView addSubview:lowerBorder];
+		UIView *otherLowerBorder = [[UIView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 1)];
+		otherLowerBorder.backgroundColor = [UIColor darkGrayColor];
+		[self.contentView addSubview:otherLowerBorder];
+	}
+	
 	if (self.displayTopBorder) {
 		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
 		upperBorder.backgroundColor = [UIColor darkGrayColor];
 		[self.contentView addSubview:upperBorder];
+	}
+	
+	else {
+		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 1, self.bounds.size.width, 1)];
+		upperBorder.backgroundColor = [UIColor darkGrayColor];
+		[self.contentView addSubview:upperBorder];
+		UIView *otherUpperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
+		otherUpperBorder.backgroundColor = [UIColor blackColor];
+		[self.contentView addSubview:otherUpperBorder];
 	}
 }
 
