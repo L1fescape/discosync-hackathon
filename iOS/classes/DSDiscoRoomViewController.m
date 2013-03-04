@@ -90,7 +90,7 @@
 - (void)viewDidLoad {
 	NSLog(@"Disco room didload");
     [super viewDidLoad];
-	//[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
+	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	
 	[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.DJName];

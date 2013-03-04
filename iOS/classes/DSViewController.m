@@ -63,11 +63,8 @@
 
 - (void)setupNavigationBar {
 	//Nav bar gradient
-	UIImageView *headerGradient = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,44)];
-	headerGradient.image = [UIImage imageNamed:@"header-bar"];
-	[self.navigationController.navigationBar insertSubview:headerGradient atIndex:1];
-	// [self.navigationController.navigationBar sendSubviewToBack:headerGradient];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header-bar"] forBarMetrics:UIBarMetricsDefault];
 
 	//Nav item image
 	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
