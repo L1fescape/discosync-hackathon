@@ -23,64 +23,10 @@
 		<div class="interfaceDJ"></div>
 		<div class="frame">
 			<div class="slider">
-				<!-- App List Container with 'item' examples -->
-				<div class="app_roomlist">
-					<div class="roomlist_item">
-						<div class="djname">DJ NAME</div>
-						<div class="genre">Music Genre</div>
-						<div class="listening">102 people listening</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">will newton</div>
-						<div class="genre">Moombahton, Trap, Electro</div>
-						<div class="listening">6 people listening</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">A-Trak</div>
-						<div class="genre">Hip Hop, Booty Bounce</div>
-						<div class="listening">1,907 people listening</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">Billy Joel</div>
-						<div class="genre">Benny &amp; the Jets</div>
-						<div class="listening">1,907,023 people love this song</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">DJ NAME</div>
-						<div class="genre">Music Genre</div>
-						<div class="listening">102 people listening</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">DJ NAME</div>
-						<div class="genre">Music Genre</div>
-						<div class="listening">102 people listening</div>
-						<div class="carrot"></div>
-					</div>
-					<div class="roomlist_item">
-						<div class="djname">DJ NAME</div>
-						<div class="genre">Music Genre</div>
-						<div class="listening">102 people listening</div>
-						<div class="carrot"></div>
-					</div>
-				</div>
-				<!-- App Room Example -->
-				<div class="app_room">
-					<div class="back">sync to a different disco</div>
-					<div class="djname">will newton</div>
-					<div class="genre">Moombahton, Trap, Electro</div>
-					<div class="listening">6 people listening</div>
-					<div class="roomsound">
-						<audio controls>
-							<source src="AmorFati.opus">
-							Your browser does not support the audio tag.
-						</audio>
-					</div>
-				</div>
+				<!-- App List Container with items -->
+				<div class="app_roomlist"></div>
+				<!-- App Room -->
+				<div class="app_room"></div>
 			</div>
 		</div>
 	</div>
@@ -110,12 +56,14 @@
 	$(document).ready(function() {
 		// init router
 		window.appRouter = new WorkspaceRouter();
-		// create collection of room items
+		// create a place to store rooms ...
 		window.rooms = {};
-		// and create a view for that
+		// ... and create a view for that
 		window.RoomListView = new RoomListView({});
-		// show the view
+		// show the room list view
 		RoomListView.render();
+		// create a view for a full room
+		window.RoomFull = new RoomFullView({});
 		// start the router
 		Backbone.history.start()
 	});
@@ -123,10 +71,14 @@
 	// Firebase
 	var disco = new Firebase('https://disco-sync.firebaseio.com/');
 	disco.child('rooms').on('child_added', function(room) {
-		console.log(room.name());
-		//rooms.append(room);
+		rooms[room.name()] = { 
+			genre : room.child('genre').val(), 
+			name : room.child('name').val(), 
+			listeners : room.child('listeners').val(), 
+			songurl : room.child('songurl').val() 
+		};
 		// when a room is added, re-render it
-		//RoomListView.render();
+		RoomListView.append(room.name());
 	});
 </script>
 </html>

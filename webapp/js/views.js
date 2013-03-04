@@ -1,5 +1,5 @@
 // Room Views
-var RoomView = Backbone.View.extend({
+var RoomFullView = Backbone.View.extend({
 	el : ".app_room",
 	model : {},
 	events : {
@@ -10,12 +10,24 @@ var RoomView = Backbone.View.extend({
 		//this.render();
 	},
 
+	clear : function() {
+		$(this.el).html();
+	},
+
 	back : function() {
-		$(".slider").animate({left : "0"}, "fast" );
-		$(".app_room").animate({opacity : 0}, "fast" );
-		$(".app_roomlist").animate({opacity : 1}, "slow" );
-		$(".dim").animate({opacity : 0}, "slow" );
-		$(".letsDJ").animate({opacity : 0.8}, "fast" );
+		window.location.hash = "";
+		this.clear();
+	},
+
+	render : function(djName) {
+		console.log(djName)
+		var dj = rooms[djName];
+		var html = '<div class="back">sync to a different disco</div>';
+		html += '<div class="djname">'+dj.name+'</div>';
+		html += '<div class="genre">'+dj.genre+'</div>';
+		html += '<div class="listening">'+dj.listening+' people listening</div>';
+		html += '<div class="roomsound"><audio controls autoplay><source src="'+dj.songurl+'" type="audio/mpeg"></audio></div>';
+		$(this.el).html(html);
 	}
 });
 
@@ -30,15 +42,37 @@ var RoomListView = Backbone.View.extend({
 		//this.render();
 	},
 
-	openRoom : function() {
-		$(".slider").animate({left : "-500px"}, "fast" );
-		$(".app_roomlist").animate({opacity : 0}, "fast" );
-		$(".app_room").animate({opacity : 1}, "slow" );
-		$(".dim").animate({opacity : 0.7}, 500 );
-		$(".letsDJ").animate({opacity : 0}, "fast" );
+	openRoom : function(e) {
+		window.location.hash = $(e.target).parent().attr('key');
+	},
+
+	clear : function() {
+		$(this.el).html();
+	},
+
+	append : function(djName) {
+		var dj = rooms[djName];
+		var room = "<div class='roomlist_item' key='"+djName+"'>";
+		room += "<div class='djname'>"+dj.name+"</div>";
+		room += "<div class='genre'>"+dj.genre+"</div>";
+		room += "<div class='listening'>"+dj.listeners+" people listening</div>";
+		room += "<div class='carrot'></div>";
+		room += "</div>";
+		$(this.el).html($(this.el).html() + room);
 	},
 
 	render : function() {
+		this.clear();
+		for (var i in rooms) {
+			var dj = rooms[i];
+			var room = "<div class='roomlist_item' key='"+i+"'>";
+			room += "<div class='djname'>"+dj.name+"</div>";
+			room += "<div class='genre'>"+dj.genre+"</div>";
+			room += "<div class='listening'>"+dj.listeners+" people listening</div>";
+			room += "<div class='carrot'></div>";
+			room += "</div>";
+			$(this.el).html($(this.el).html() + room);
+		}
 	}
 		
 });
