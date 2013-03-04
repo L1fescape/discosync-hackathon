@@ -96,15 +96,6 @@
 		upperBorder.backgroundColor = [UIColor darkGrayColor];
 		[self.contentView addSubview:upperBorder];
 	}
-	
-	else {
-		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 1, self.bounds.size.width, 1)];
-		upperBorder.backgroundColor = [UIColor darkGrayColor];
-		[self.contentView addSubview:upperBorder];
-		UIView *otherUpperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
-		otherUpperBorder.backgroundColor = [UIColor blackColor];
-		[self.contentView addSubview:otherUpperBorder];
-	}
 }
 
 @end
