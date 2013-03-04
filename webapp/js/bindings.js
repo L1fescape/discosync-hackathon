@@ -56,13 +56,9 @@ var bindings = {
 			$(".aboutButton").animate({opacity : 1}, "slow" );
 		});
 	$("input[type='submit']").click(function() {
-
-		$.ajax({
-			  url: "/login",
-				type: "post",
-			  data: { username : $("input.username").val(), password : $("input.password").val() }
-		}).done(function() {
-			  $(this).addClass("done");
+		var login_creds = { username : $("input.username").val(), password : $("input.password").val() }
+		$.post("/login", login_creds, function(output) {
+			console.log(output);
 		});
 		return false;
 	});
