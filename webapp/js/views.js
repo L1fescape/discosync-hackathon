@@ -102,6 +102,18 @@ $(document).ready(function(){
 		$(".app_roomlist").animate({opacity : 1}, "slow" );
 		$(".slider").css({left : 0});
 	});
+	$(".interfaceDJ").click(function(){
+		$(".app_main").animate({width : "600px"}, "slow" );
+		$(".letsDJ").animate({opacity : 0.5}, "slow");
+		$(".frame").css({display : "block"});
+		$(".frame").animate({opacity : 1}, "slow" );
+		$(".closeDJ").animate({opacity : 0}, "slow");
+		$(".interfaceDJ").animate({opacity : 0}, "fast");
+		$(".interfaceDJ").animate({top : "1000px"}, "fast");
+		$(".dim").animate({opacity : 0}, "slow" );
+		$(".app_roomlist").animate({opacity : 1}, "slow" );
+		$(".slider").css({left : 0});
+	});
 	$(".aboutButton").click(function(){
 		$(".app_main").animate({top : "-1000px"}, 500 );
 		$(".aboutButton").animate({opacity : 0}, "slow" );
