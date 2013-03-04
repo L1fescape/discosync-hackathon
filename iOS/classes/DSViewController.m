@@ -67,24 +67,28 @@
 		cell.detailTextLabel.text = @"Moombahton, Dutch";
 		cell.listenerCount = @"42";
 		cell.displayTopBorder = NO;
+		cell.targetURL = [NSURL URLWithString:@"http://10.100.30.229:8000/spin"];
 	}
 	
 	else if (indexPath.row == 1) {
 		cell.textLabel.text = @"Knife Party";
 		cell.detailTextLabel.text = @"Dubstep, Electro";
 		cell.listenerCount = @"901";
+		cell.targetURL = [NSURL URLWithString:@""];
 	}
 	
 	else if (indexPath.row == 2) {
 		cell.textLabel.text = @"Deadmau5";
 		cell.detailTextLabel.text = @"House";
 		cell.listenerCount = @"7821";
+		cell.targetURL = [NSURL URLWithString:@""];
 	}
 	
 	else if (indexPath.row == 3) {
 		cell.textLabel.text = @"The Glitch Mob";
 		cell.detailTextLabel.text = @"Glitch Hop";
 		cell.listenerCount = @"431";
+		cell.targetURL = [NSURL URLWithString:@""];
 	}
 	
 	else if (indexPath.row == 4) {
@@ -92,6 +96,7 @@
 		cell.detailTextLabel.text = @"Moombahton";
 		cell.listenerCount = @"23";
 		cell.displayBottomBorder = NO;
+		cell.targetURL = [NSURL URLWithString:@""];
 	}
 	
 	return cell;
@@ -121,6 +126,7 @@
 	}
 	
 	[room configureLabels];
+	room.targetURL = cell.targetURL;
 	
 	[self.navigationController pushViewController:room animated:YES];
 	

@@ -32,9 +32,9 @@
 		0889FB0016E445CC00223407 /* header-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0889FAFE16E445CC00223407 /* header-bar@2x.png */; };
 		0898504E16E48BC400B34564 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889FB2016E4889400223407 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0898504F16E48C8E00B34564 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08490ABF16E2BA1A007CF3E6 /* AudioToolbox.framework */; };
+		0898506316E4915E00B34564 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		089EA48316E325D600F03AC0 /* DSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 089EA48216E325D600F03AC0 /* DSCell.m */; };
 		08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 084911A216E31584007CF3E6 /* Firebase.framework */; };
-		08B425EB16E3358400A2C729 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0849115C16E3011F007CF3E6 /* Security.framework */; };
 		6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613A16E2AEE700481BA5 /* UIKit.framework */; };
 		6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613C16E2AEE700481BA5 /* Foundation.framework */; };
 		6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6595613E16E2AEE700481BA5 /* CoreGraphics.framework */; };
@@ -108,13 +108,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0898506316E4915E00B34564 /* Security.framework in Frameworks */,
 				0898504F16E48C8E00B34564 /* AudioToolbox.framework in Frameworks */,
 				0889FAA316E3F4AA00223407 /* libicucore.dylib in Frameworks */,
 				08490AC216E2BA24007CF3E6 /* CFNetwork.framework in Frameworks */,
 				08490ABD16E2BA11007CF3E6 /* MediaPlayer.framework in Frameworks */,
 				6595613B16E2AEE700481BA5 /* UIKit.framework in Frameworks */,
 				08B425EA16E3355D00A2C729 /* Firebase.framework in Frameworks */,
-				08B425EB16E3358400A2C729 /* Security.framework in Frameworks */,
 				6595613D16E2AEE700481BA5 /* Foundation.framework in Frameworks */,
 				6595613F16E2AEE700481BA5 /* CoreGraphics.framework in Frameworks */,
 			);

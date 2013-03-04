@@ -62,16 +62,9 @@
 	return _listeners;
 }
 
-- (AudioStreamer *)streamer {
-	if (!_streamer) {
-		_streamer = [[AudioStreamer alloc] initWithURL:[NSURL URLWithString:@"http://vipicecast.yacast.net/europe1.mp3"]];
-	}
-	return _streamer;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
+	//[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
 	
 	[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.DJName];
@@ -79,8 +72,19 @@
 	[self.view addSubview:self.listeners];
 	
 	//Set up streamer and start pulling audio
-	//[self setupStreamer];
+	[self setupStreamer];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 	[self.streamer start];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[self.streamer stop];
+}
+
+- (void)setupStreamer {
+	self.streamer = [[AudioStreamer alloc] initWithURL:self.targetURL];
 }
 
 - (void)configureLabels {

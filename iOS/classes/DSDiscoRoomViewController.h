@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *DJName;
 @property (nonatomic, strong) UILabel *genre;
 @property (nonatomic, strong) UILabel *listeners;
+@property (nonatomic, strong) NSURL *targetURL;
 
 - (void)configureLabels;
 
