@@ -18,11 +18,13 @@
 }
 
 - (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
-	if (!_latestSnapshotDict) {
-		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
-	}
-	else {
-		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+	if ([latestSnapshotDict isKindOfClass:[NSDictionary class]]) {
+		if (!_latestSnapshotDict) {
+			_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+		}
+		else {
+			[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+		}
 	}
 
 	[self updateDisplay];
