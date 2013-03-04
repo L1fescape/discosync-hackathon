@@ -9,6 +9,7 @@
 #import "DSViewController.h"
 #import "DSDiscoRoomViewController.h"
 #import "DSCell.h"
+#import "MBProgressHUD.h"
 
 @interface DSViewController ()
 
@@ -40,6 +41,10 @@
 	//Set table view styles
 	[self setupTableView];
 	
+	
+	MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	hud.labelText = @"Loading Rooms";
+	
 }
 
 - (void)setupNavigationBar {
@@ -59,6 +64,9 @@
 	self.firebase = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
 	[self.firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
 		NSLog(@"Main room info updated");
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[MBProgressHUD hideHUDForView:self.view animated:YES];
+		});
 		[self performSelectorOnMainThread:@selector(setLatestSnapshot:) withObject:snapshot waitUntilDone:NO];
 	}];
 }
