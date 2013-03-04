@@ -19,15 +19,12 @@ var RoomFullView = Backbone.View.extend({
 		this.clear();
 	},
 
+	update : function(room) {
+	},
+
 	render : function(djName) {
-		console.log(djName)
 		var dj = rooms[djName];
-		var html = '<div class="back">sync to a different disco</div>';
-		html += '<div class="djname">'+dj.name+'</div>';
-		html += '<div class="genre">'+dj.genre+'</div>';
-		html += '<div class="listening">'+dj.listening+' people listening</div>';
-		html += '<div class="roomsound"><audio controls autoplay><source src="'+dj.songurl+'" type="audio/mpeg"></audio></div>';
-		$(this.el).html(html);
+		$(this.el).html(Mustache.to_html(templates.fullRoom(), dj));
 	}
 });
 
@@ -52,26 +49,13 @@ var RoomListView = Backbone.View.extend({
 
 	append : function(djName) {
 		var dj = rooms[djName];
-		var room = "<div class='roomlist_item' key='"+djName+"'>";
-		room += "<div class='djname'>"+dj.name+"</div>";
-		room += "<div class='genre'>"+dj.genre+"</div>";
-		room += "<div class='listening'>"+dj.listeners+" people listening</div>";
-		room += "<div class='carrot'></div>";
-		room += "</div>";
-		$(this.el).html($(this.el).html() + room);
+		$(this.el).append(Mustache.to_html(templates.itemRoom(), { name : djName, val : dj }));
 	},
 
 	render : function() {
 		this.clear();
 		for (var i in rooms) {
-			var dj = rooms[i];
-			var room = "<div class='roomlist_item' key='"+i+"'>";
-			room += "<div class='djname'>"+dj.name+"</div>";
-			room += "<div class='genre'>"+dj.genre+"</div>";
-			room += "<div class='listening'>"+dj.listeners+" people listening</div>";
-			room += "<div class='carrot'></div>";
-			room += "</div>";
-			$(this.el).html($(this.el).html() + room);
+			this.append(i)
 		}
 	}
 		
