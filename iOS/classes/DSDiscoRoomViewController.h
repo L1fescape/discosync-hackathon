@@ -16,9 +16,10 @@
 @property (nonatomic, strong) UILabel *listenerCount;
 
 @property (nonatomic, strong) Firebase *firebase;
-@property (nonatomic, strong) FDataSnapshot *latestSnapshot;
+@property (nonatomic, strong) NSMutableDictionary *latestSnapshotDict;
 @property (nonatomic, strong) NSURL *targetURL;
 
 - (void)configureLabels;
+- (void)updateDisplay;
 
 @end

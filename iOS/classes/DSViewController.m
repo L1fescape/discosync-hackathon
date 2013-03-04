@@ -100,7 +100,7 @@
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
 	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
 	room.firebase = [self.firebase child:roomName];
-	room.latestSnapshot = [self.latestSnapshot child:roomName];
+	room.latestSnapshotDict = [self.latestSnapshot child:roomName].val;
 
 	if (indexPath.row % 3 == 0) {
 		room.backgroundView.image = [UIImage imageNamed:@"room-1"];

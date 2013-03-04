@@ -20,18 +20,19 @@
 - (void)setFirebase:(Firebase *)firebase {
 	_firebase = firebase;
 	[_firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
-		[self performSelectorOnMainThread:@selector(setLatestSnapshot:) withObject:snapshot waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
 	}];
 }
 
-- (void)setLatestSnapshot:(FDataSnapshot *)latestSnapshot {
-	NSLog(@"got an update");
-	_latestSnapshot = latestSnapshot;
-	self.DJName.text = [latestSnapshot.val valueForKey:@"name"];
-	self.genre.text = [latestSnapshot.val valueForKey:@"genre"];
-	self.listenerCount.text = [NSString stringWithFormat:@"%@", [latestSnapshot.val valueForKey:@"listeners"]];
-	self.targetURL = [NSURL URLWithString:[latestSnapshot.val valueForKey:@"songurl"]];
-	NSLog(@"update processed");
+- (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
+	NSLog(@"got an update: %@", latestSnapshotDict);
+	if (!_latestSnapshotDict) {
+		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+	}
+	else {
+		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+	}
+	[self updateDisplay];
 }
 
 - (void)setTargetURL:(NSURL *)targetURL {
@@ -105,6 +106,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.streamer start];
+	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] + 1;
+	NSLog(@"Listeners: %@ == %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
+	[self.firebase update:@{@"listeners": [NSNumber numberWithInt:listeners]}];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -129,6 +134,13 @@
 
 	listenersRect.origin.y = genreRect.origin.y + genreRect.size.height;
 	self.listenerCount.frame = listenersRect;
+}
+
+- (void)updateDisplay {
+	self.DJName.text = [self.latestSnapshotDict valueForKey:@"name"];
+	self.genre.text = [self.latestSnapshotDict valueForKey:@"genre"];
+	self.listenerCount.text = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
 @end
