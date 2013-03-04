@@ -91,7 +91,7 @@
 		[self.contentView addSubview:otherLowerBorder];
 	}
 	
-	if (self.displayTopBorder) {
+	if (YES || self.displayTopBorder) {
 		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
 		upperBorder.backgroundColor = [UIColor darkGrayColor];
 		[self.contentView addSubview:upperBorder];
