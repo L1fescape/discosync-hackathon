@@ -36,9 +36,14 @@
 
 - (void)setTargetURL:(NSURL *)targetURL {
 	if (![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
-		NSLog(@"targetURL has changed");
+		NSLog(@"targetURL has changed to %@", targetURL);
 		_targetURL = targetURL;
 		// restart the stream, the URL has changed
+		BOOL wasPlaying = self.streamer.isPlaying;
+		[self setupStreamer];
+		if (wasPlaying) {
+			[self.streamer start];
+		}
 	}
 }
 
@@ -121,7 +126,9 @@
 }
 
 - (void)setupStreamer {
-	self.streamer = [[AudioStreamer alloc] initWithURL:self.targetURL];
+	if (self.targetURL) {
+		self.streamer = [[AudioStreamer alloc] initWithURL:self.targetURL];
+	}
 }
 
 - (void)configureLabels {
