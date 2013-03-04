@@ -7,8 +7,11 @@
 //
 
 #import "DSDiscoRoomViewController.h"
+#import "AudioStreamer.h"
 
 @interface DSDiscoRoomViewController ()
+
+@property (nonatomic, strong) AudioStreamer *streamer;
 
 @end
 
@@ -59,6 +62,13 @@
 	return _listeners;
 }
 
+- (AudioStreamer *)streamer {
+	if (!_streamer) {
+		_streamer = [[AudioStreamer alloc] initWithURL:[NSURL URLWithString:@"http://vipicecast.yacast.net/europe1.mp3"]];
+	}
+	return _streamer;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
@@ -67,6 +77,10 @@
 	[self.view addSubview:self.DJName];
 	[self.view addSubview:self.genre];
 	[self.view addSubview:self.listeners];
+	
+	//Set up streamer and start pulling audio
+	//[self setupStreamer];
+	[self.streamer start];
 }
 
 - (void)configureLabels {
