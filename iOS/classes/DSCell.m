@@ -18,11 +18,13 @@
 }
 
 - (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
-	if (!_latestSnapshotDict) {
-		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
-	}
-	else {
-		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+	if ([latestSnapshotDict isKindOfClass:[NSDictionary class]]) {
+		if (!_latestSnapshotDict) {
+			_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+		}
+		else {
+			[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+		}
 	}
 
 	[self updateDisplay];
@@ -42,7 +44,12 @@
 - (void)updateDisplay {
 	self.textLabel.text = [self.latestSnapshotDict valueForKey:@"name"];
 	self.detailTextLabel.text = [self.latestSnapshotDict valueForKey:@"genre"];
-	self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	if ([self.latestSnapshotDict valueForKey:@"listeners"]) {
+		self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	}
+	else {
+		self.listenerCount = @"0";
+	}
 	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
@@ -91,7 +98,7 @@
 		[self.contentView addSubview:otherLowerBorder];
 	}
 	
-	if (self.displayTopBorder) {
+	if (YES || self.displayTopBorder) {
 		UIView *upperBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
 		upperBorder.backgroundColor = [UIColor darkGrayColor];
 		[self.contentView addSubview:upperBorder];

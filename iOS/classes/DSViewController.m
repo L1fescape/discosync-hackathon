@@ -29,6 +29,7 @@
 	}
 	else {
 		for (NSString *key in [latestSnapshotDict allKeys]) {
+			NSLog(@"merging for key %@, new type: %@", key, NSStringFromClass([[latestSnapshotDict objectForKey:key] class]));
 			if ([_latestSnapshotDict objectForKey:key]) {
 				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
 			}
@@ -64,7 +65,7 @@
 - (void)setupNavigationBar {
 	//Nav bar gradient
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-	[[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header-bar"] forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header-bar"] forBarMetrics:UIBarMetricsDefault];
 
 	//Nav item image
 	[self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"nav-logo"]]];
