@@ -24,8 +24,7 @@
 	}];
 }
 
-- (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
-	NSLog(@"got an update: %@", latestSnapshotDict);
+- (void)setLatestSnapshotDict:(NSDictionary *)latestSnapshotDict {
 	if (!_latestSnapshotDict) {
 		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
 	}
@@ -107,13 +106,18 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[self.streamer start];
 	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] + 1;
-	NSLog(@"Listeners: %@ == %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
+	NSLog(@"Listeners: %@ => %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
 	[self.firebase update:@{@"listeners": [NSNumber numberWithInt:listeners]}];
 
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[self.streamer stop];
+	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] - 1;
+	if (listeners >= 0) {
+		NSLog(@"Decrementing listeners to %i", listeners);
+		[self.firebase update:@{@"listeners": [NSNumber numberWithInt:listeners]}];
+	}
 }
 
 - (void)setupStreamer {

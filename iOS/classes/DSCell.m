@@ -13,16 +13,19 @@
 - (void)setFirebase:(Firebase *)firebase {
 	_firebase = firebase;
 	[_firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
-		[self performSelectorOnMainThread:@selector(setLatestSnapshot:) withObject:snapshot waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
 	}];
 }
 
-- (void)setLatestSnapshot:(FDataSnapshot *)latestSnapshot {
-	_latestSnapshot = latestSnapshot;
-	self.textLabel.text = [latestSnapshot.val valueForKey:@"name"];
-	self.detailTextLabel.text = [latestSnapshot.val valueForKey:@"genre"];
-	self.listenerCount = [NSString stringWithFormat:@"%@", [latestSnapshot.val valueForKey:@"listeners"]];
-	self.targetURL = [NSURL URLWithString:[latestSnapshot.val valueForKey:@"songurl"]];
+- (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
+	if (!_latestSnapshotDict) {
+		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+	}
+	else {
+		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+	}
+
+	[self updateDisplay];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -36,10 +39,12 @@
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)updateDisplay {
+	NSLog(@"updateDisplay %@", self.latestSnapshotDict);
+	self.textLabel.text = [self.latestSnapshotDict valueForKey:@"name"];
+	self.detailTextLabel.text = [self.latestSnapshotDict valueForKey:@"genre"];
+	self.listenerCount = [NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]];
+	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
 }
 
 - (void)layoutSubviews {

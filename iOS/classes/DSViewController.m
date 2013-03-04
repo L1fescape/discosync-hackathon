@@ -14,17 +14,32 @@
 @interface DSViewController ()
 
 @property (nonatomic, strong) Firebase *firebase;
-@property (nonatomic, strong) FDataSnapshot *latestSnapshot;
+@property (nonatomic, strong) NSMutableDictionary *latestSnapshotDict;
 @property (nonatomic, strong) NSArray *rooms;
 
 @end
 
 @implementation DSViewController
 
-- (void)setLatestSnapshot:(FDataSnapshot *)latestSnapshot {
-	_latestSnapshot = latestSnapshot;
-	NSDictionary *snapVal = [latestSnapshot val];
-	self.rooms = [snapVal allKeys];
+- (void)setLatestSnapshotDict:(NSMutableDictionary *)latestSnapshotDict {
+	[MBProgressHUD hideHUDForView:self.view animated:YES];
+	// NSLog(@"new root snapshot: %@", latestSnapshotDict); // can be used to demonstrate firebase bug, lolz
+	if (!_latestSnapshotDict) {
+		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
+	}
+	else {
+		for (NSString *key in [latestSnapshotDict allKeys]) {
+			if ([_latestSnapshotDict objectForKey:key]) {
+				id obj = [_latestSnapshotDict objectForKey:key];
+				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
+			}
+			else {
+				[_latestSnapshotDict setObject:[latestSnapshotDict objectForKey:key] forKey:key];
+			}
+		}
+	}
+
+	self.rooms = [_latestSnapshotDict allKeys];
 	[self.tableView reloadData];
 }
 
@@ -64,10 +79,7 @@
 	self.firebase = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
 	[self.firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
 		NSLog(@"Main room info updated");
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
-		});
-		[self performSelectorOnMainThread:@selector(setLatestSnapshot:) withObject:snapshot waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
 	}];
 }
 
@@ -86,9 +98,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	DSCell *cell = [[DSCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
-	NSLog(@"roomName: %@", roomName);
+	NSLog(@"Generating cell for roomName: %@", roomName);
 	cell.firebase = [self.firebase child:roomName];
-	cell.latestSnapshot = [self.latestSnapshot child:roomName];
+	cell.latestSnapshotDict = [self.latestSnapshotDict objectForKey:roomName];
 
 	if (indexPath.row == 0) {
 		cell.displayTopBorder = NO;
@@ -108,7 +120,7 @@
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
 	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
 	room.firebase = [self.firebase child:roomName];
-	room.latestSnapshotDict = [self.latestSnapshot child:roomName].val;
+	room.latestSnapshotDict = [self.latestSnapshotDict objectForKey:roomName];
 
 	if (indexPath.row % 3 == 0) {
 		room.backgroundView.image = [UIImage imageNamed:@"room-1"];
