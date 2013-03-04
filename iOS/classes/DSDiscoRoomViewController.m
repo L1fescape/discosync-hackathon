@@ -79,7 +79,7 @@
 	[self.streamer start];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
 	[self.streamer stop];
 }
 
