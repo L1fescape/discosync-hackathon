@@ -19,6 +19,10 @@
 
 @implementation DSDiscoRoomViewController
 
+- (NSString *)roomName {
+	return self.firebase.name;
+}
+
 - (void)setFirebase:(Firebase *)firebase {
 	_firebase = firebase;
 	[_firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
@@ -31,8 +35,10 @@
 		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
 	}
 	else {
-		// crash is here check for dict
-		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+		// crash is here, check for dict
+		if ([latestSnapshotDict isKindOfClass:[NSDictionary class]]) {
+			[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
+		}
 	}
 	[self updateDisplay];
 }

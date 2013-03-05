@@ -30,11 +30,15 @@
 	else {
 		for (NSString *key in [latestSnapshotDict allKeys]) {
 			//NSLog(@"merging for key %@, new type: %@", key, NSStringFromClass([[latestSnapshotDict objectForKey:key] class]));
-			if ([_latestSnapshotDict objectForKey:key]) {
-				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
-			}
-			else {
-				[_latestSnapshotDict setObject:[latestSnapshotDict objectForKey:key] forKey:key];
+			NSObject *oldValue = [_latestSnapshotDict objectForKey:key];
+			NSObject *newValue = [latestSnapshotDict objectForKey:key];
+			if ([newValue isKindOfClass:[NSMutableDictionary class]]) {
+				if (oldValue && [oldValue isKindOfClass:[NSDictionary class]]) {
+					[(NSMutableDictionary *)oldValue addEntriesFromDictionary:(NSDictionary *)newValue];
+				}
+				else {
+					[_latestSnapshotDict setObject:newValue forKey:key];
+				}
 			}
 		}
 	}
@@ -46,6 +50,11 @@
 - (void)removeRoom:(NSString *)roomName {
 	NSLog(@"removing room %@", roomName);
 	[self.latestSnapshotDict removeObjectForKey:roomName];
+	UIViewController *topViewController = self.navigationController.topViewController;
+	if ([topViewController isKindOfClass:[DSDiscoRoomViewController class]] && [[(DSDiscoRoomViewController *)topViewController roomName] isEqualToString:roomName]) {
+		NSLog(@"Room %@ is top VC, popping.", roomName);
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 - (void)viewDidLoad {
