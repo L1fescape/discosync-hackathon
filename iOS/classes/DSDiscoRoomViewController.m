@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) AudioStreamer *streamer;
 
+- (BOOL)targetURLIsValid:(NSURL *)targetURL;
+
 @end
 
 @implementation DSDiscoRoomViewController
@@ -35,7 +37,7 @@
 }
 
 - (void)setTargetURL:(NSURL *)targetURL {
-	if (![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
+	if ([self targetURLIsValid:targetURL] && ![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
 		NSLog(@"targetURL has changed to %@", targetURL);
 		_targetURL = targetURL;
 		// restart the stream, the URL has changed
@@ -44,6 +46,13 @@
 		if (wasPlaying) {
 			[self.streamer start];
 		}
+	}
+}
+
+- (BOOL)targetURLIsValid:(NSURL *)targetURL {
+	NSString *urlString = [targetURL absoluteString];
+	if (urlString.length) {
+		return YES;
 	}
 }
 
@@ -126,7 +135,7 @@
 }
 
 - (void)setupStreamer {
-	if (self.targetURL) {
+	if ([self targetURLIsValid:self.targetURL]) {
 		self.streamer = [[AudioStreamer alloc] initWithURL:self.targetURL];
 	}
 }
