@@ -1,8 +1,8 @@
 jackdmp -d coreaudio &
-sleep 1
+sleep 2
 icecast -c ./icecast.xml &
-sleep 1
+sleep 2
 darkice -c ./darkice.cfg &
-sleep 1
+sleep 2
 ipconfig getifaddr en0
 ipconfig getifaddr en1
