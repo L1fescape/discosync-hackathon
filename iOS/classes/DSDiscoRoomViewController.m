@@ -31,6 +31,7 @@
 		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
 	}
 	else {
+		// crash is here check for dict
 		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
 	}
 	[self updateDisplay];
@@ -51,9 +52,11 @@
 
 - (BOOL)targetURLIsValid:(NSURL *)targetURL {
 	NSString *urlString = [targetURL absoluteString];
-	if (urlString.length) {
+	NSLog(@"checking substring %@", [urlString substringToIndex:7]);
+	if (urlString.length && [[urlString substringToIndex:7] isEqualToString:@"http://"]) {
 		return YES;
 	}
+	return NO;
 }
 
 - (UIImageView *)backgroundView {
