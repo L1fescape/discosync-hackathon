@@ -29,7 +29,7 @@
 	}
 	else {
 		for (NSString *key in [latestSnapshotDict allKeys]) {
-			NSLog(@"merging for key %@, new type: %@", key, NSStringFromClass([[latestSnapshotDict objectForKey:key] class]));
+			//NSLog(@"merging for key %@, new type: %@", key, NSStringFromClass([[latestSnapshotDict objectForKey:key] class]));
 			if ([_latestSnapshotDict objectForKey:key]) {
 				[(NSMutableDictionary *)[_latestSnapshotDict objectForKey:key] addEntriesFromDictionary:[latestSnapshotDict objectForKey:key]];
 			}
@@ -41,6 +41,11 @@
 
 	self.rooms = [_latestSnapshotDict allKeys];
 	[self.tableView reloadData];
+}
+
+- (void)removeRoom:(NSString *)roomName {
+	NSLog(@"removing room %@", roomName);
+	[self.latestSnapshotDict removeObjectForKey:roomName];
 }
 
 - (void)viewDidLoad {
@@ -75,8 +80,12 @@
 - (void)setupFirebase {
 	self.firebase = [[Firebase alloc] initWithUrl:@"https://disco-sync.firebaseio.com/rooms"];
 	[self.firebase on:FEventTypeValue doCallback:^(FDataSnapshot *snapshot) {
-		NSLog(@"Main room info updated");
+		NSLog(@"Firebase event: %i, %@", FEventTypeValue, snapshot.val);
 		[self performSelectorOnMainThread:@selector(setLatestSnapshotDict:) withObject:snapshot.val waitUntilDone:NO];
+	}];
+	[self.firebase on:FEventTypeChildRemoved doCallback:^(FDataSnapshot *snapshot) {
+		NSLog(@"Firebase event: %i, %@", FEventTypeChildRemoved, snapshot.val);
+		[self performSelectorOnMainThread:@selector(removeRoom:) withObject:snapshot.name waitUntilDone:NO];
 	}];
 }
 
