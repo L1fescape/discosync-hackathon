@@ -31,19 +31,22 @@
 		_latestSnapshotDict = [latestSnapshotDict mutableCopy];
 	}
 	else {
+		// crash is here check for dict
 		[_latestSnapshotDict addEntriesFromDictionary:latestSnapshotDict];
 	}
 	[self updateDisplay];
 }
 
 - (void)setTargetURL:(NSURL *)targetURL {
+	NSLog(@"setTargetURL: %@", [targetURL absoluteString]);
 	if ([self targetURLIsValid:targetURL] && ![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
-		NSLog(@"targetURL has changed to %@", targetURL);
+		NSLog(@"targetURL has changed to %@", [targetURL absoluteString]);
 		_targetURL = targetURL;
 		// restart the stream, the URL has changed
 		BOOL wasPlaying = self.streamer.isPlaying;
 		[self setupStreamer];
 		if (wasPlaying) {
+			NSLog(@"play stream");
 			[self.streamer start];
 		}
 	}
@@ -51,9 +54,11 @@
 
 - (BOOL)targetURLIsValid:(NSURL *)targetURL {
 	NSString *urlString = [targetURL absoluteString];
-	if (urlString.length) {
+	NSLog(@"checking substring %@", [urlString substringToIndex:7]);
+	if (urlString.length && [[urlString substringToIndex:7] isEqualToString:@"http://"]) {
 		return YES;
 	}
+	return NO;
 }
 
 - (UIImageView *)backgroundView {
@@ -118,6 +123,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"room will appear");
 	[self.streamer start];
 	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] + 1;
 	NSLog(@"Listeners: %@ => %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
@@ -126,6 +132,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+	NSLog(@"room will dissapear");
 	[self.streamer stop];
 	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] - 1;
 	if (listeners >= 0) {
