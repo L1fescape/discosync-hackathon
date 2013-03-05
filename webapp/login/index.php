@@ -1,7 +1,6 @@
 <?php 
 
 include("login.php");
-include("text.php");
 
 $method = $_POST["method"];
 
