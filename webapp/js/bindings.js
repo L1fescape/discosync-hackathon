@@ -45,6 +45,7 @@ var bindings = {
 		});
 	$("input[type='submit']").click(function() {
 		var login_creds = { username : $("input.username").val(), password : $("input.password").val() }
+		console.log(login_creds);
 		$.post("/login", login_creds, function(output) {
 			console.log(output);
 		});
