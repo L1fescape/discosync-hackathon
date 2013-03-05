@@ -7,3 +7,6 @@
 .DS_Store
 thumbs.db
 desktop.ini
+
+# Login stuff
+webapp/login/db.php
