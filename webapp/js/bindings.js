@@ -48,7 +48,7 @@ var bindings = {
 			console.log(login_creds);
 			$.post("/login", login_creds, function(output) {
 				output = $.parseJSON(output);
-				if (output.error) {
+				if (output['error']) {
 					alert("There was an error logging you in :(");
 				}
 				else {
