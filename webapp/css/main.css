@@ -260,16 +260,28 @@ html{
 }
 
 .interfaceDJ {
-	width:800px;
-	height:400px;
-	opacity:0;
 	position:absolute;
+	width:2000px;
 	top:1000px;
 	left:100px;
+	opacity:0;
+}
+
+.interfaceDJ .login {
+	width:800px;
+	height:400px;
 	background:url(../img/signup-large-2.png);
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:600px auto;
+	display:inline-block;
+}
+
+.interfaceDJ .user {
+	width:800px;
+	margin-left:200px;
+	height:400px;
+	display:inline-block;
 }
 
 .interfaceDJ input {

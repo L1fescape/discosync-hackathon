@@ -38,9 +38,16 @@
 		<div class="logo"></div>
 		<div class="closeDJ"></div><div class="letsDJ"></div>
 		<div class="interfaceDJ">
-			<input class='username' placeholder="DJ Name"/>
-			<input class='password' type=password placeholder="Password"/>
-			<input type='submit' class="submit"/>
+			<div class='login'>
+				<input class='username' placeholder="Username"/>
+				<input class='password' type='password' placeholder="Password"/>
+				<input type='submit' class="submit"/>
+			</div>
+			<div class='user'>
+				<input class='name' placeholder='DJ Name' />
+				<input class='genre' placeholder='Genre' />
+				<input class='stream' placeholder='Stream Url' />
+			</div>
 		</div>
 		<div class="frame">
 			<div class="slider">
@@ -103,6 +110,8 @@
 		RoomListView.render();
 		// create a view for a full room
 		window.RoomFull = new RoomFullView({});
+		// create a view for a logged-in user
+		window.User = new UserView({});
 		// start the router
 		Backbone.history.start()
 
