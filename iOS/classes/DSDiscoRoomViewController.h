@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UILabel *genre;
 @property (nonatomic, strong) UILabel *listenerCount;
 
+@property (nonatomic, readonly) NSString *roomName;
 @property (nonatomic, strong) Firebase *firebase;
 @property (nonatomic, strong) NSMutableDictionary *latestSnapshotDict;
 @property (nonatomic, strong) NSURL *targetURL;
