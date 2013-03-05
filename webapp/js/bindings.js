@@ -44,9 +44,8 @@ var bindings = {
 			$(".aboutButton").animate({opacity : 1}, "slow" );
 		});
 		$("input[type='submit']").click(function() {
-			var login_creds = { username : $("input.username").val(), password : $("input.password").val() }
-			console.log(login_creds);
-			$.post("/login", login_creds, function(output) {
+			$.post("/login", {"lol" : "lolz"}, function(output) {
+				console.log(output)
 				output = $.parseJSON(output);
 				if (output['error']) {
 					alert("There was an error logging you in :(");

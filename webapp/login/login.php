@@ -15,6 +15,7 @@ class Login {
 		);
 
 		$query = "SELECT * FROM users WHERE `username`='$username';";
+		$response['user'] = $username;
 
 		$result = mysql_query($query, $db->conn);
 

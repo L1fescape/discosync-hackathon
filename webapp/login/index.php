@@ -1,17 +1,12 @@
 <?php 
 
 include("login.php");
+$username = $_POST["username"];
+$password = $_POST["password"];
 
-$method = $_POST["method"];
+$login = new Login();
+$response = $login->loginAttempt($username, $password);
 
-if ($method == "login") {
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-
-	$login = new Login();
-	$response = $login->loginAttempt($username, $password);
-
-	echo json_encode($response);
-}
+echo json_encode($response);
 
 ?>

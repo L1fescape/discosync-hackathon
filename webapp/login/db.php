@@ -2,9 +2,9 @@
 
 class DB {
 	// Connection credentials
-	private $db_user = "USERNAME";
-	private $db_pass = "PASS";
-	private $db_name = "DB";
+	private $db_user = "discosync";
+	private $db_pass = "s1nk";
+	private $db_name = "discosync";
 
 	public $conn;
 
