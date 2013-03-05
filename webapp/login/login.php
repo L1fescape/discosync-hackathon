@@ -20,7 +20,6 @@ class Login {
 
 		while ($row = mysql_fetch_array($result)) {
 			if ($password == $row["password"]) {
-				$session_token = $this->genToken();
 				$response = array(
 					"error" => False,
 					"genre" => $row["genre"],
