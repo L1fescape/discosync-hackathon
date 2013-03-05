@@ -122,9 +122,9 @@
 #pragma mark table view delegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	NSLog(@"Room clicked");
 	DSDiscoRoomViewController *room = [[DSDiscoRoomViewController alloc] init];
 	NSString *roomName = [self.rooms objectAtIndex:indexPath.row];
+	NSLog(@"Room clicked: %@", roomName);
 	room.firebase = [self.firebase child:roomName];
 	room.latestSnapshotDict = [self.latestSnapshotDict objectForKey:roomName];
 

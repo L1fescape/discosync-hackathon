@@ -38,13 +38,15 @@
 }
 
 - (void)setTargetURL:(NSURL *)targetURL {
+	NSLog(@"setTargetURL: %@", [targetURL absoluteString]);
 	if ([self targetURLIsValid:targetURL] && ![[_targetURL absoluteString] isEqualToString:[targetURL absoluteString]]) {
-		NSLog(@"targetURL has changed to %@", targetURL);
+		NSLog(@"targetURL has changed to %@", [targetURL absoluteString]);
 		_targetURL = targetURL;
 		// restart the stream, the URL has changed
 		BOOL wasPlaying = self.streamer.isPlaying;
 		[self setupStreamer];
 		if (wasPlaying) {
+			NSLog(@"play stream");
 			[self.streamer start];
 		}
 	}
@@ -121,6 +123,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+	NSLog(@"room will appear");
 	[self.streamer start];
 	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] + 1;
 	NSLog(@"Listeners: %@ => %i", [self.latestSnapshotDict valueForKey:@"listeners"], listeners);
@@ -129,6 +132,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+	NSLog(@"room will dissapear");
 	[self.streamer stop];
 	int listeners = [[self.latestSnapshotDict valueForKey:@"listeners"] intValue] - 1;
 	if (listeners >= 0) {
