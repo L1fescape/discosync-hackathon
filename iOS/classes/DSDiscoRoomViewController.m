@@ -102,7 +102,7 @@
 
 - (UILabel *)listenerCount {
 	if (!_listenerCount) {
-		_listenerCount = [[UILabel alloc] initWithFrame:CGRectMake(8, 176, 320, 40)];
+		_listenerCount = [[UILabel alloc] initWithFrame:CGRectMake(8, 176, 320, 140)];
 		_listenerCount.backgroundColor = [UIColor clearColor];
 		_listenerCount.textColor = [UIColor whiteColor];
 		_listenerCount.font = [UIFont systemFontOfSize:28.0f];
@@ -174,6 +174,9 @@
 	self.genre.text = [self.latestSnapshotDict valueForKey:@"genre"];
 	self.listenerCount.text = [[NSString stringWithFormat:@"%@", [self.latestSnapshotDict valueForKey:@"listeners"]] stringByAppendingString:@" listening"];
 	self.targetURL = [NSURL URLWithString:[self.latestSnapshotDict valueForKey:@"songurl"]];
+	[self.DJName sizeToFit];
+	[self.genre sizeToFit];
+	[self.listenerCount sizeToFit];
 }
 
 @end
