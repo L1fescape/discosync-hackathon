@@ -28,7 +28,7 @@ var RoomFullView = Backbone.View.extend({
 		var dj = rooms[djName];
 		$(this.el).children(".djname").html(dj.name);
 		$(this.el).children(".genre").html(dj.genre);
-		$(this.el).children(".listeners").html(dj.listeners + " people listening");
+		$(this.el).children(".listeners").html(dj.listeners + " listening");
 		var audio = $('audio')[0];
 		$("#mp3Src").attr('src', dj.songurl);
 		audio.pause();
